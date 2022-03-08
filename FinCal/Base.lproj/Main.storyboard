@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Savings-->
+        <!--Savings View Controller-->
         <scene sceneID="yWC-6E-1j5">
             <objects>
-                <viewController title="Savings" id="i41-1y-qDf" customClass="SavingsViewController" customModule="FinCal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i41-1y-qDf" customClass="SavingsViewController" customModule="FinCal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ap5-bH-UP7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,11 +28,11 @@
                         <viewLayoutGuide key="safeArea" id="zpf-ma-GBo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Savings" image="dollarsign.circle" catalog="system" id="QxJ-1V-lvy"/>
+                    <navigationItem key="navigationItem" id="pia-9M-ozD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbf-xR-90D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="-76"/>
+            <point key="canvasLocation" x="2350.7246376811595" y="-76.339285714285708"/>
         </scene>
         <!--Loans and Mortgage-->
         <scene sceneID="kUW-Yk-427">
@@ -53,11 +53,11 @@
                         <viewLayoutGuide key="safeArea" id="J2H-Qo-Zi6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Loans and Mortgages" image="arrow.down.doc" catalog="system" selectedImage="arrow.down.doc" id="kzC-oo-c4C"/>
+                    <navigationItem key="navigationItem" id="KG7-s2-96C"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eg2-fU-xWF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="669"/>
+            <point key="canvasLocation" x="2350.7246376811595" y="668.97321428571422"/>
         </scene>
         <!--Compound Interest-->
         <scene sceneID="NbE-O5-lBh">
@@ -78,13 +78,11 @@
                         <viewLayoutGuide key="safeArea" id="IMQ-qj-aOZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Compound Savings" id="AIy-b5-VXZ">
-                        <imageReference key="image" image="percent" catalog="system" symbolScale="medium"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="nka-Jx-cqq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAb-Xv-tC4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="1394"/>
+            <point key="canvasLocation" x="2350.7246376811595" y="1393.5267857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="MrU-Tf-U1S">
@@ -92,18 +90,82 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3Ti-Bq-S6d" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bcV-OZ-sWV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="i41-1y-qDf" kind="relationship" relationship="viewControllers" id="dMF-X0-Hmy"/>
-                        <segue destination="ZAy-eZ-qWo" kind="relationship" relationship="viewControllers" id="QG6-e0-djg"/>
-                        <segue destination="tFa-2C-9TK" kind="relationship" relationship="viewControllers" id="v57-cZ-HqA"/>
+                        <segue destination="tkF-c6-l7B" kind="relationship" relationship="viewControllers" id="dMF-X0-Hmy"/>
+                        <segue destination="zMO-kB-Ttt" kind="relationship" relationship="viewControllers" id="v57-cZ-HqA"/>
+                        <segue destination="P2H-kO-bNH" kind="relationship" relationship="viewControllers" id="QG6-e0-djg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIF-ZI-rBw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-42.028985507246382" y="668.97321428571422"/>
+        </scene>
+        <!--Savings-->
+        <scene sceneID="gnm-fe-5rH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkF-c6-l7B" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Savings" image="dollarsign.circle" catalog="system" id="QxJ-1V-lvy"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eVe-0S-LY0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="i41-1y-qDf" kind="relationship" relationship="rootViewController" id="P8L-nt-Fk7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Azg-vb-IaU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1440.5797101449277" y="-76.339285714285708"/>
+        </scene>
+        <!--Loans and Mortgages-->
+        <scene sceneID="dxV-Q4-5sg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P2H-kO-bNH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Loans and Mortgages" image="arrow.down.doc" catalog="system" selectedImage="arrow.down.doc" id="kzC-oo-c4C"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fcG-V6-9V0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZAy-eZ-qWo" kind="relationship" relationship="rootViewController" id="xKA-ut-MD4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0N-O7-ie0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1440.5797101449277" y="668.97321428571422"/>
+        </scene>
+        <!--Compound Savings-->
+        <scene sceneID="lsK-vc-hae">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zMO-kB-Ttt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Compound Savings" id="AIy-b5-VXZ">
+                        <imageReference key="image" image="percent" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="20V-pX-X7q">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tFa-2C-9TK" kind="relationship" relationship="rootViewController" id="9UI-93-Egf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbm-6F-bWd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1440.5797101449277" y="1393.5267857142856"/>
         </scene>
     </scenes>
     <resources>
