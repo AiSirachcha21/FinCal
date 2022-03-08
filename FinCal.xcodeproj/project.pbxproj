@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		069171AD27D78CA70071ECE3 /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AC27D78CA70071ECE3 /* SavingsViewController.swift */; };
+		069171AF27D78CF20071ECE3 /* CompoundInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */; };
 		06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC427D4780A0083266B /* AppDelegate.swift */; };
 		06FC9CC727D4780A0083266B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC627D4780A0083266B /* SceneDelegate.swift */; };
-		06FC9CC927D4780A0083266B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC827D4780A0083266B /* ViewController.swift */; };
+		06FC9CC927D4780A0083266B /* LoanMortgageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC827D4780A0083266B /* LoanMortgageViewController.swift */; };
 		06FC9CCC27D4780A0083266B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06FC9CCA27D4780A0083266B /* Main.storyboard */; };
 		06FC9CCE27D4780C0083266B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06FC9CCD27D4780C0083266B /* Assets.xcassets */; };
 		06FC9CD127D4780C0083266B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06FC9CCF27D4780C0083266B /* LaunchScreen.storyboard */; };
+		06FC9CDD27D48C340083266B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CDC27D48C340083266B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		069171AC27D78CA70071ECE3 /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
+		069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundInterestViewController.swift; sourceTree = "<group>"; };
 		06FC9CC127D4780A0083266B /* FinCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06FC9CC427D4780A0083266B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06FC9CC627D4780A0083266B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		06FC9CC827D4780A0083266B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		06FC9CC827D4780A0083266B /* LoanMortgageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanMortgageViewController.swift; sourceTree = "<group>"; };
 		06FC9CCB27D4780A0083266B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06FC9CCD27D4780C0083266B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06FC9CD027D4780C0083266B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06FC9CD227D4780C0083266B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06FC9CDC27D48C340083266B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,34 @@
 		06FC9CC327D4780A0083266B /* FinCal */ = {
 			isa = PBXGroup;
 			children = (
+				06FC9CDE27D48D000083266B /* Controllers */,
+				06FC9CD927D487700083266B /* Models */,
 				06FC9CC427D4780A0083266B /* AppDelegate.swift */,
 				06FC9CC627D4780A0083266B /* SceneDelegate.swift */,
-				06FC9CC827D4780A0083266B /* ViewController.swift */,
 				06FC9CCA27D4780A0083266B /* Main.storyboard */,
 				06FC9CCD27D4780C0083266B /* Assets.xcassets */,
 				06FC9CCF27D4780C0083266B /* LaunchScreen.storyboard */,
 				06FC9CD227D4780C0083266B /* Info.plist */,
 			);
 			path = FinCal;
+			sourceTree = "<group>";
+		};
+		06FC9CD927D487700083266B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				06FC9CDC27D48C340083266B /* Constants.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		06FC9CDE27D48D000083266B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				06FC9CC827D4780A0083266B /* LoanMortgageViewController.swift */,
+				069171AC27D78CA70071ECE3 /* SavingsViewController.swift */,
+				069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06FC9CC927D4780A0083266B /* ViewController.swift in Sources */,
+				06FC9CC927D4780A0083266B /* LoanMortgageViewController.swift in Sources */,
+				069171AD27D78CA70071ECE3 /* SavingsViewController.swift in Sources */,
 				06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */,
 				06FC9CC727D4780A0083266B /* SceneDelegate.swift in Sources */,
+				06FC9CDD27D48C340083266B /* Constants.swift in Sources */,
+				069171AF27D78CF20071ECE3 /* CompoundInterestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,11 +330,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryank.FinCal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryank.fincal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -330,11 +358,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryank.FinCal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryank.fincal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
