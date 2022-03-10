@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		068379FF27D9FD210012D45A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */; };
+		06837A0227DA2D820012D45A /* Payable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0127DA2D820012D45A /* Payable.swift */; };
+		06837A0427DA30EA0012D45A /* MonthlyPayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0327DA30EA0012D45A /* MonthlyPayable.swift */; };
+		06837A0627DA31660012D45A /* Savings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0527DA31650012D45A /* Savings.swift */; };
+		06837A0827DA32350012D45A /* CompoundSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0727DA32350012D45A /* CompoundSavings.swift */; };
 		069171AD27D78CA70071ECE3 /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AC27D78CA70071ECE3 /* SavingsViewController.swift */; };
 		069171AF27D78CF20071ECE3 /* CompoundInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */; };
 		06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC427D4780A0083266B /* AppDelegate.swift */; };
@@ -19,6 +24,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		06837A0127DA2D820012D45A /* Payable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payable.swift; sourceTree = "<group>"; };
+		06837A0327DA30EA0012D45A /* MonthlyPayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPayable.swift; sourceTree = "<group>"; };
+		06837A0527DA31650012D45A /* Savings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Savings.swift; sourceTree = "<group>"; };
+		06837A0727DA32350012D45A /* CompoundSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSavings.swift; sourceTree = "<group>"; };
+		06837A0927DA359C0012D45A /* FormulaTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FormulaTests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		069171AC27D78CA70071ECE3 /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
 		069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundInterestViewController.swift; sourceTree = "<group>"; };
 		06FC9CC127D4780A0083266B /* FinCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +54,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		068379FD27D9FD0D0012D45A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		06837A0027DA2C0A0012D45A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				06837A0127DA2D820012D45A /* Payable.swift */,
+				06837A0327DA30EA0012D45A /* MonthlyPayable.swift */,
+				06837A0527DA31650012D45A /* Savings.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		069171B027D79A8B0071ECE3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +98,8 @@
 		06FC9CC327D4780A0083266B /* FinCal */ = {
 			isa = PBXGroup;
 			children = (
+				06837A0927DA359C0012D45A /* FormulaTests.playground */,
+				068379FD27D9FD0D0012D45A /* Extensions */,
 				069171B027D79A8B0071ECE3 /* Components */,
 				06FC9CDE27D48D000083266B /* Controllers */,
 				06FC9CD927D487700083266B /* Models */,
@@ -85,7 +116,9 @@
 		06FC9CD927D487700083266B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				06837A0027DA2C0A0012D45A /* Protocols */,
 				06FC9CDC27D48C340083266B /* Constants.swift */,
+				06837A0727DA32350012D45A /* CompoundSavings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,11 +204,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06837A0827DA32350012D45A /* CompoundSavings.swift in Sources */,
 				06FC9CC927D4780A0083266B /* LoanMortgageViewController.swift in Sources */,
 				069171AD27D78CA70071ECE3 /* SavingsViewController.swift in Sources */,
 				06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */,
+				06837A0627DA31660012D45A /* Savings.swift in Sources */,
+				068379FF27D9FD210012D45A /* UIViewController+Extensions.swift in Sources */,
+				06837A0427DA30EA0012D45A /* MonthlyPayable.swift in Sources */,
 				06FC9CC727D4780A0083266B /* SceneDelegate.swift in Sources */,
 				06FC9CDD27D48C340083266B /* Constants.swift in Sources */,
+				06837A0227DA2D820012D45A /* Payable.swift in Sources */,
 				069171AF27D78CF20071ECE3 /* CompoundInterestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +369,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -359,6 +398,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
