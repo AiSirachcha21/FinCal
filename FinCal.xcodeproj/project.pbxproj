@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		068379FF27D9FD210012D45A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */; };
 		06837A0227DA2D820012D45A /* Payable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0127DA2D820012D45A /* Payable.swift */; };
-		06837A0427DA30EA0012D45A /* MonthlyPayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0327DA30EA0012D45A /* MonthlyPayable.swift */; };
 		06837A0627DA31660012D45A /* Savings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0527DA31650012D45A /* Savings.swift */; };
 		06837A0827DA32350012D45A /* CompoundSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0727DA32350012D45A /* CompoundSavings.swift */; };
 		069171AD27D78CA70071ECE3 /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AC27D78CA70071ECE3 /* SavingsViewController.swift */; };
 		069171AF27D78CF20071ECE3 /* CompoundInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */; };
+		06E0449C27DAFEF7007CBA8C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */; };
+		06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */; };
 		06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC427D4780A0083266B /* AppDelegate.swift */; };
 		06FC9CC727D4780A0083266B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC627D4780A0083266B /* SceneDelegate.swift */; };
 		06FC9CC927D4780A0083266B /* LoanMortgageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC827D4780A0083266B /* LoanMortgageViewController.swift */; };
@@ -26,12 +27,13 @@
 /* Begin PBXFileReference section */
 		068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		06837A0127DA2D820012D45A /* Payable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payable.swift; sourceTree = "<group>"; };
-		06837A0327DA30EA0012D45A /* MonthlyPayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyPayable.swift; sourceTree = "<group>"; };
 		06837A0527DA31650012D45A /* Savings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Savings.swift; sourceTree = "<group>"; };
 		06837A0727DA32350012D45A /* CompoundSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSavings.swift; sourceTree = "<group>"; };
 		06837A0927DA359C0012D45A /* FormulaTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FormulaTests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		069171AC27D78CA70071ECE3 /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
 		069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundInterestViewController.swift; sourceTree = "<group>"; };
+		06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
 		06FC9CC127D4780A0083266B /* FinCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06FC9CC427D4780A0083266B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06FC9CC627D4780A0083266B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */,
+				06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */,
+				06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -66,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				06837A0127DA2D820012D45A /* Payable.swift */,
-				06837A0327DA30EA0012D45A /* MonthlyPayable.swift */,
 				06837A0527DA31650012D45A /* Savings.swift */,
 			);
 			path = Protocols;
@@ -204,13 +207,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */,
+				06E0449C27DAFEF7007CBA8C /* Double+Extensions.swift in Sources */,
 				06837A0827DA32350012D45A /* CompoundSavings.swift in Sources */,
 				06FC9CC927D4780A0083266B /* LoanMortgageViewController.swift in Sources */,
 				069171AD27D78CA70071ECE3 /* SavingsViewController.swift in Sources */,
 				06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */,
 				06837A0627DA31660012D45A /* Savings.swift in Sources */,
 				068379FF27D9FD210012D45A /* UIViewController+Extensions.swift in Sources */,
-				06837A0427DA30EA0012D45A /* MonthlyPayable.swift in Sources */,
 				06FC9CC727D4780A0083266B /* SceneDelegate.swift in Sources */,
 				06FC9CDD27D48C340083266B /* Constants.swift in Sources */,
 				06837A0227DA2D820012D45A /* Payable.swift in Sources */,
