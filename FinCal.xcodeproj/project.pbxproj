@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		064B8D6927DE7F9400AE4DD5 /* SimpleSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B8D6827DE7F9400AE4DD5 /* SimpleSavings.swift */; };
 		068379FF27D9FD210012D45A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */; };
 		06837A0227DA2D820012D45A /* Payable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0127DA2D820012D45A /* Payable.swift */; };
 		06837A0627DA31660012D45A /* Savings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0527DA31650012D45A /* Savings.swift */; };
@@ -15,6 +16,7 @@
 		069171AF27D78CF20071ECE3 /* CompoundInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */; };
 		06E0449C27DAFEF7007CBA8C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */; };
 		06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */; };
+		06E044A027DB412C007CBA8C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */; };
 		06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC427D4780A0083266B /* AppDelegate.swift */; };
 		06FC9CC727D4780A0083266B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC627D4780A0083266B /* SceneDelegate.swift */; };
 		06FC9CC927D4780A0083266B /* LoanMortgageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC827D4780A0083266B /* LoanMortgageViewController.swift */; };
@@ -25,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		064B8D6827DE7F9400AE4DD5 /* SimpleSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSavings.swift; sourceTree = "<group>"; };
 		068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		06837A0127DA2D820012D45A /* Payable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payable.swift; sourceTree = "<group>"; };
 		06837A0527DA31650012D45A /* Savings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Savings.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundInterestViewController.swift; sourceTree = "<group>"; };
 		06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
+		06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		06FC9CC127D4780A0083266B /* FinCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06FC9CC427D4780A0083266B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06FC9CC627D4780A0083266B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 				068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */,
 				06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */,
 				06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */,
+				06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 				06837A0027DA2C0A0012D45A /* Protocols */,
 				06FC9CDC27D48C340083266B /* Constants.swift */,
 				06837A0727DA32350012D45A /* CompoundSavings.swift */,
+				064B8D6827DE7F9400AE4DD5 /* SimpleSavings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E044A027DB412C007CBA8C /* UITextField+Extensions.swift in Sources */,
 				06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */,
 				06E0449C27DAFEF7007CBA8C /* Double+Extensions.swift in Sources */,
 				06837A0827DA32350012D45A /* CompoundSavings.swift in Sources */,
@@ -219,6 +226,7 @@
 				06FC9CDD27D48C340083266B /* Constants.swift in Sources */,
 				06837A0227DA2D820012D45A /* Payable.swift in Sources */,
 				069171AF27D78CF20071ECE3 /* CompoundInterestViewController.swift in Sources */,
+				064B8D6927DE7F9400AE4DD5 /* SimpleSavings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
