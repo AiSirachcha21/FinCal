@@ -9,7 +9,46 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    func assignTFID (id: TextFieldID) {
-        self.tag = id.rawValue
+    func addNumericAccessory(addPlusMinus: Bool) {
+        let numberToolbar = UIToolbar()
+        numberToolbar.barStyle = UIBarStyle.default
+
+        var accessories: [UIBarButtonItem] = []
+
+        if addPlusMinus {
+            accessories.append(UIBarButtonItem(title: "+/-", style: UIBarButtonItem.Style.plain, target: self, action: #selector(plusMinusPressed)))
+            accessories.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))   // add padding after
+        }
+
+        accessories.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))   // add padding space
+        accessories.append(UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(numberPadDone)))
+
+        numberToolbar.items = accessories
+        numberToolbar.sizeToFit()
+
+        inputAccessoryView = numberToolbar
+    }
+
+    @objc func numberPadDone() {
+        self.resignFirstResponder()
+        self.sendActions(for: .editingDidEnd)
+    }
+
+    /// Action for Plus/Minus Toggle Button
+    /// - Important: UITextField does not detect programmatic changes to text property. So sendActions function is required to manually send a notification to the UITextField.
+    /// - SeeAlso: [sendActions Call](https://stackoverflow.com/questions/49918355/uitextfield-editing-changed-not-call)
+    @objc func plusMinusPressed() {
+        guard let currentText = self.text else {
+            return
+        }
+        if currentText.hasPrefix("-") {
+            let offsetIndex = currentText.index(currentText.startIndex, offsetBy: 1)
+            let substring = currentText[offsetIndex...]  // remove first character
+            self.text = String(substring)
+        } else {
+            self.text = "-" + currentText
+        }
+
+        self.sendActions(for: .editingChanged)
     }
 }
