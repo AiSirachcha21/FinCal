@@ -13,13 +13,13 @@ extension UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
+
     func hideKeyboardWhenSwipeDown() {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         swipe.direction = .down
         view.addGestureRecognizer(swipe)
     }
-    
+
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
