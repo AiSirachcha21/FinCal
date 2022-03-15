@@ -38,6 +38,12 @@ class SavingsViewController: UIViewController {
                 self.simpleSavings.principalAmount = Double(senderText) ?? 0.0
             case TextFieldID.interest.rawValue:
                 self.simpleSavings.interest = (Double(senderText) ?? 0.0) / 100
+            case TextFieldID.numberOfPayments.rawValue:
+                self.simpleSavings.numberOfPayments = Int(senderText) ?? 0
+            case TextFieldID.duration.rawValue:
+                self.simpleSavings.duration = Int(senderText) ?? 0
+            case TextFieldID.futureValue.rawValue:
+                self.simpleSavings.futureValue = Double(senderText) ?? 0.0
             default:
                 return
             }
