@@ -8,6 +8,6 @@
 import Foundation
 
 // Payables where a future value can be earned based on payments
-protocol Savings : Payable {
+protocol Savings: Payable {
     var futureValue: Double? { get set }
 }
