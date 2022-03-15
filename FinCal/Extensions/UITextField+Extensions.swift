@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    func assignTFID (id: TextFieldID){
+    func assignTFID (id: TextFieldID) {
         self.tag = id.rawValue
     }
 }
