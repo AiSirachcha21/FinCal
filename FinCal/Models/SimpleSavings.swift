@@ -7,25 +7,21 @@
 
 import Foundation
 
-class SimpleSavings: Savings {
-
-    init(futureValue: Double? = nil, principalAmount: Double, annualInterestRate: Double = 0.0, paymentCount: Int = 12, duration: Int = 1) {
-        self.futureValue = futureValue
-        self.principalAmount = principalAmount
-        self.interest = annualInterestRate
-        self.numberOfPayments = paymentCount
-        self.duration = duration
+class SimpleSavings: CustomStringConvertible {
+    init() {
     }
 
-    var futureValue: Double?
-    var principalAmount: Double
-    var duration: Int
-    var interest: Double
-    var numberOfPayments: Int
+    public var description: String { return "\(SimpleSavings.Type.self)(futureValue: \(futureValue), principalAmount: \(principalAmount), interest: \(interest), duration: \(duration))" }
+
+    var futureValue: Double = 0.0
+    var principalAmount: Double = 0.0
+    var duration: Int = 1
+    var interest: Double = 0.0
+    var compoundsPerYear: Int = 12
 
     func getFutureValue(updateOriginal: Bool = false) -> Double {
-        let inner = 1 + (self.interest / Double(self.numberOfPayments))
-        let futureVal = self.principalAmount * pow(inner, Double(self.numberOfPayments * self.duration))
+        let inner = 1 + (self.interest / Double(self.compoundsPerYear))
+        let futureVal = self.principalAmount * pow(inner, Double(self.compoundsPerYear * self.duration))
 
         if updateOriginal {
             self.futureValue = futureVal
@@ -37,15 +33,14 @@ class SimpleSavings: Savings {
     func getRate(updateOriginal: Bool = false) -> Double {
         var newInterest: Double = 0.0
 
-        if let existingFutureValue = self.futureValue {
-            let innerDenominator = self.principalAmount > 0 ? existingFutureValue/self.principalAmount : 0
-            let inner = pow(existingFutureValue/innerDenominator, 1/Double(self.numberOfPayments*self.duration)) - 1
-            newInterest = Double(self.numberOfPayments) * inner
+        let innerDenominator = self.principalAmount > 0 ? self.futureValue / self.principalAmount : 0
+        let inner = pow(self.futureValue / innerDenominator, 1 / Double(self.compoundsPerYear * self.duration)) - 1
+        newInterest = Double(self.compoundsPerYear) * inner
 
-            if updateOriginal {
-                self.interest = newInterest
-            }
+        if updateOriginal {
+            self.interest = newInterest
         }
+
         return newInterest
     }
 
