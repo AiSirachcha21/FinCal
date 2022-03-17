@@ -33,9 +33,6 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                <connections>
-                                                    <action selector="onEdited:" destination="i41-1y-qDf" eventType="editingChanged" id="wNX-M0-0jR"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -52,9 +49,6 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                <connections>
-                                                    <action selector="onEdited:" destination="i41-1y-qDf" eventType="editingChanged" id="dZn-5J-v6k"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -71,9 +65,6 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                <connections>
-                                                    <action selector="onEdited:" destination="i41-1y-qDf" eventType="editingChanged" id="ToT-kD-PRz"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -90,9 +81,6 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                <connections>
-                                                    <action selector="onEdited:" destination="i41-1y-qDf" eventType="editingChanged" id="9v2-tb-8xP"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -109,9 +97,6 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                <connections>
-                                                    <action selector="onEdited:" destination="i41-1y-qDf" eventType="editingChanged" id="DEQ-Rs-B7z"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -129,11 +114,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="pia-9M-ozD"/>
                     <connections>
-                        <outletCollection property="simpleSavingsFormFields" destination="rLI-Jc-KHM" collectionClass="NSMutableArray" id="yKF-cH-NUd"/>
-                        <outletCollection property="simpleSavingsFormFields" destination="F6A-je-Eae" collectionClass="NSMutableArray" id="wDW-f0-k5c"/>
-                        <outletCollection property="simpleSavingsFormFields" destination="HRZ-bm-fBE" collectionClass="NSMutableArray" id="Kg6-48-Kzc"/>
-                        <outletCollection property="simpleSavingsFormFields" destination="afV-8f-NJY" collectionClass="NSMutableArray" id="fp8-Vx-fjW"/>
-                        <outletCollection property="simpleSavingsFormFields" destination="I88-pI-cIR" collectionClass="NSMutableArray" id="PWq-ga-MzE"/>
+                        <outlet property="principalAmountTF" destination="rLI-Jc-KHM" id="L0l-bi-YHl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbf-xR-90D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
