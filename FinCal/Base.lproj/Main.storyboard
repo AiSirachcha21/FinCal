@@ -17,10 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Kb0-7f-IZa">
-                                <rect key="frame" x="20" y="88" width="374" height="318"/>
+                                <rect key="frame" x="20" y="88" width="374" height="402.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q6h-w0-PbN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZS8-Ai-T1P">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="64.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q6h-w0-PbN">
+                                        <rect key="frame" x="0.0" y="84.5" width="374" height="64.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Principal Amount £" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2C-wR-b9A">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -32,11 +38,14 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <connections>
+                                                    <action selector="onEdit:" destination="i41-1y-qDf" eventType="editingChanged" id="HfH-7y-Hwn"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4KL-Bu-s2R">
-                                        <rect key="frame" x="0.0" y="84.5" width="374" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="169" width="374" height="64.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRg-K5-mEz">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -48,11 +57,14 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <connections>
+                                                    <action selector="onEdit:" destination="i41-1y-qDf" eventType="editingChanged" id="c8q-cs-9hQ"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qQt-Nj-uX5">
-                                        <rect key="frame" x="0.0" y="169" width="374" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="253.5" width="374" height="64.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Future Value £" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmU-ke-cid">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -64,11 +76,14 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <connections>
+                                                    <action selector="onEdit:" destination="i41-1y-qDf" eventType="editingChanged" id="8aH-iz-pfd"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="S14-6J-7eW">
-                                        <rect key="frame" x="0.0" y="253.5" width="374" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="338" width="374" height="64.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R6-zw-gFl">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -80,6 +95,9 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <connections>
+                                                    <action selector="onEdit:" destination="i41-1y-qDf" eventType="editingChanged" id="sCf-Pv-fav"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -89,10 +107,9 @@
                         <viewLayoutGuide key="safeArea" id="zpf-ma-GBo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Kb0-7f-IZa" firstAttribute="centerX" secondItem="Ap5-bH-UP7" secondAttribute="centerX" id="NTf-TH-3hC"/>
-                            <constraint firstItem="zpf-ma-GBo" firstAttribute="trailing" secondItem="Kb0-7f-IZa" secondAttribute="trailing" constant="20" id="UH3-oD-yx3"/>
-                            <constraint firstItem="Kb0-7f-IZa" firstAttribute="leading" secondItem="zpf-ma-GBo" secondAttribute="leading" constant="20" id="pbC-tX-Tkt"/>
-                            <constraint firstItem="Kb0-7f-IZa" firstAttribute="top" secondItem="zpf-ma-GBo" secondAttribute="top" id="vXF-lw-gAm"/>
+                            <constraint firstItem="zpf-ma-GBo" firstAttribute="trailing" secondItem="Kb0-7f-IZa" secondAttribute="trailing" constant="20" id="IE4-8O-Tym"/>
+                            <constraint firstItem="Kb0-7f-IZa" firstAttribute="leading" secondItem="zpf-ma-GBo" secondAttribute="leading" constant="20" id="aHu-zd-4uD"/>
+                            <constraint firstItem="Kb0-7f-IZa" firstAttribute="top" secondItem="zpf-ma-GBo" secondAttribute="top" id="hbb-F3-ttQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pia-9M-ozD"/>
@@ -100,7 +117,12 @@
                         <outlet property="futureValueTF" destination="afV-8f-NJY" id="gGd-b7-yZW"/>
                         <outlet property="interestTF" destination="F6A-je-Eae" id="fFv-zE-Lug"/>
                         <outlet property="numberOfPaymentsTF" destination="I88-pI-cIR" id="zob-71-kDV"/>
+                        <outlet property="onScreenAlertText" destination="ZS8-Ai-T1P" id="0Wp-0l-VyG"/>
                         <outlet property="principalAmountTF" destination="rLI-Jc-KHM" id="L0l-bi-YHl"/>
+                        <outletCollection property="textFields" destination="rLI-Jc-KHM" collectionClass="NSMutableArray" id="10f-GR-rMs"/>
+                        <outletCollection property="textFields" destination="afV-8f-NJY" collectionClass="NSMutableArray" id="pnC-lF-V11"/>
+                        <outletCollection property="textFields" destination="F6A-je-Eae" collectionClass="NSMutableArray" id="KBd-zB-Soh"/>
+                        <outletCollection property="textFields" destination="I88-pI-cIR" collectionClass="NSMutableArray" id="MZK-7l-rij"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbf-xR-90D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

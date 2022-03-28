@@ -9,16 +9,31 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-struct SavingFormFieldObservables {
-    var principalAmount: Observable<Optional<String>>
+class SavingFormFieldObservables {
+    var principalAmount: Observable<Optional<String>>?
+    var interest: Observable<Optional<String>>?
+    var duration: Observable<Optional<String>>?
+    var futureValue: Observable<Optional<String>>?
+    var numberOfPayments: Observable<Optional<String>>?
+    
+    init() {
+    }
 }
 
 class SavingsViewController: UIViewController {
     
     @IBOutlet var principalAmountTF: UITextField!
+    @IBOutlet var interestTF: UITextField!
+    @IBOutlet var futureValueTF: UITextField!
+    @IBOutlet var numberOfPaymentsTF: UITextField!
+    @IBOutlet var onScreenAlertText: UILabel!
     
+    @IBOutlet var textFields: [UITextField]!
+    
+    private var savingsViewModel = SimpleSavingsViewModel()
     private var disposeBag = DisposeBag()
-    private var simpleSavings = SimpleSavings()
+    
+    private var insufficientFields = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,42 +42,85 @@ class SavingsViewController: UIViewController {
         
         title = "Savings"
         
+        onScreenAlertText.isHidden = insufficientFields
+        onScreenAlertText.text = "One or more fields are required to do the calculation"
+        onScreenAlertText.textColor = UIColor.red
+        
+        
         // TODO: Action needs to be implemented here for the "Help View"
         let questionImage = UIImage(systemName: "questionmark.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .default))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: questionImage, style: .plain, target: self, action: nil)
-        
-        //        simpleSavingsFormFields.forEach { $0.addNumericAccessory(addPlusMinus: true) }q
-        let observables = setupInputBindings()
-        setupSubscriptions(observables)
-        
     }
     
-    func setupInputBindings() -> SavingFormFieldObservables {
-        let principleAmount = principalAmountTF
-            .rx
-            .text
-            .observe(on: MainScheduler.asyncInstance)
-            .distinctUntilChanged()
+    
+    @IBAction func onEdit(_ sender: UITextField) {
+        parseTextFieldValueToObject(sender)
+        hasSufficientFieldsForCalculation(fieldsToCheck: textFields)
         
-        return SavingFormFieldObservables(principalAmount: principleAmount)
+        if !insufficientFields {
+            let missingField = textFields.first(where: { $0.text!.isEmpty })
+            
+            if let missingFieldTag = missingField?.tag  {
+                print(missingFieldTag)
+                switch missingFieldTag {
+                    case TextFieldID.futureValue.rawValue:
+                        let futureValue = savingsViewModel.savings.value.getFutureValue()
+                        futureValueTF.text = futureValue.description
+                        savingsViewModel.savings.value.futureValue = futureValue
+                        break
+                    case TextFieldID.interest.rawValue:
+                        let savings = savingsViewModel.savings.value
+                        let interest = savingsViewModel.savings.value.getRate(initialAmount: savings.principalAmount, futureAmount: savings.futureValue, duration: savings.duration)
+                        interestTF.text = interest.roundTo(decimalPlaces: 2).description
+                        savingsViewModel.savings.value.interest = interest.roundTo(decimalPlaces: 2)
+                    default:
+                        break
+                }
+            }
+        }
     }
     
-    func setupSubscriptions(_ observables: SavingFormFieldObservables) {
-        observables.principalAmount
-            .debounce(.milliseconds(1500), scheduler: MainScheduler.asyncInstance)
-            .subscribe(
-                onNext: { [weak self] value in
-                    guard let text = value else {
-                        self?.simpleSavings.principalAmount = 0.0
-                        return
-                    }
-                    self?.simpleSavings.principalAmount = Double(text) ?? 0.0
-                    
-                    print(self?.simpleSavings.principalAmount ?? "Nothing here")
-                },
-                onError: { _ in },
-                onCompleted: nil,
-                onDisposed: nil )
-            .disposed(by: disposeBag)
+    func parseTextFieldValueToObject(_ field: UITextField) {
+        switch field.tag {
+            case TextFieldID.futureValue.rawValue:
+                savingsViewModel.savings.value.futureValue = Double(field.text!) ?? 0.0
+                break
+                
+            case TextFieldID.principalAmount.rawValue:
+                savingsViewModel.savings.value.principalAmount = Double(field.text!) ?? 0.0
+                break
+                
+            case TextFieldID.interest.rawValue:
+                savingsViewModel.savings.value.interest = Double(field.text!) ?? 0.0
+                break
+                
+            case TextFieldID.duration.rawValue:
+                savingsViewModel.savings.value.duration = Int(field.text!) ?? 0
+                break
+            
+            default:
+                break
+        }
     }
+    
+    
+    func hasSufficientFieldsForCalculation(fieldsToCheck: [UITextField]) {
+        //TODO: Check for Future Value Calculation is not done here. Implement
+        //CHECK: Interest calculation seems to be working but changing the duration doesn't seem to affect it.
+        let canCalculateInitialAmount = savingsViewModel.canCalculateInitialAmount()
+        let canCalculateInterest = savingsViewModel.canCalculateInterest()
+        let canCalculateDurationRequiredInYears = savingsViewModel.canCalculateDurationRequiredInYears()
+        let allFieldsAreEmpty = [futureValueTF,numberOfPaymentsTF,principalAmountTF,interestTF].allSatisfy({ $0.text!.isEmpty })
+        
+        if allFieldsAreEmpty || !canCalculateInitialAmount.result || !canCalculateInterest.result || !canCalculateDurationRequiredInYears.result {
+            insufficientFields = true
+            onScreenAlertText.isHidden = false
+            return
+        }
+        
+        insufficientFields = false
+        onScreenAlertText.isHidden = true
+    }
+    
+    
 }

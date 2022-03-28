@@ -32,11 +32,9 @@ class SimpleSavings: CustomStringConvertible {
     }
 
     func getRate(initialAmount: Double, futureAmount: Double, duration: Int) -> Double {
-        var newInterest: Double = 0.0
-
         let innerDenominator = initialAmount == 0 ? 1 : futureAmount / initialAmount
         let inner = pow(futureAmount / innerDenominator, 1 / Double(self.compoundsPerYear * duration)) - 1
-        newInterest = Double(self.compoundsPerYear) * inner
+        let newInterest = Double(self.compoundsPerYear) * inner
 
         return newInterest
     }
