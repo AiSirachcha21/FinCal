@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import RxRelay
 
 class SimpleSavingsViewModel {
 //    var canCalculateInterest = false
@@ -15,24 +14,24 @@ class SimpleSavingsViewModel {
 //    var canCalculateInitialInvestment = false
     var canCalculate = false
 
-    var savings = BehaviorRelay(value: SimpleSavings())
+    var savings = SimpleSavings()
     
     func canCalculateInitialAmount() -> ValidationResult<Bool> {
         var errorMessages = [String]()
         
-        if savings.value.futureValue > 0 && savings.value.interest >= 0 && savings.value.duration > 0  {
+        if savings.futureValue > 0 && savings.interest >= 0 && savings.duration > 0  {
             return ValidationResult(result: true)
         }
         
-        if savings.value.duration <= 0 {
+        if savings.duration <= 0 {
             errorMessages.append("Duration needs to be greater than 0")
         }
         
-        if savings.value.interest < 0 {
+        if savings.interest < 0 {
             errorMessages.append("Interest has to be 0 or greater")
         }
         
-        if savings.value.futureValue <= 0.0 {
+        if savings.futureValue <= 0.0 {
             errorMessages.append("Future Value has to be greater than 0")
         }
         
@@ -42,19 +41,19 @@ class SimpleSavingsViewModel {
     func canCalculateInterest() -> ValidationResult<Bool> {
         var errorMessages = [String]()
         
-        if savings.value.principalAmount > 0 || savings.value.futureValue > 0 || savings.value.duration > 0{
+        if savings.principalAmount > 0 || savings.futureValue > 0 || savings.duration > 0{
             return ValidationResult(result: true)
         }
         
-        if savings.value.principalAmount <= 0.0 {
+        if savings.principalAmount <= 0.0 {
             errorMessages.append("Principal amount needs to be greater than 0")
         }
         
-        if savings.value.interest < 0 {
+        if savings.interest < 0 {
             errorMessages.append("Interest has to be 0 or greater")
         }
         
-        if savings.value.futureValue <= 0.0 {
+        if savings.futureValue <= 0.0 {
             errorMessages.append("Future Value has to be greater than 0")
         }
         
@@ -64,19 +63,19 @@ class SimpleSavingsViewModel {
     func canCalculateDurationRequiredInYears() -> ValidationResult<Bool> {
         var errorMessages = [String]()
         
-        if savings.value.principalAmount > 0 && savings.value.futureValue > 0 && savings.value.interest >= 0 {
+        if savings.principalAmount > 0 && savings.futureValue > 0 && savings.interest >= 0 {
             return ValidationResult(result: true)
         }
         
-        if savings.value.principalAmount <= 0.0 {
+        if savings.principalAmount <= 0.0 {
             errorMessages.append("Principal amount needs to be greater than 0")
         }
         
-        if savings.value.interest < 0 {
+        if savings.interest < 0 {
             errorMessages.append("Interest has to be 0 or greater")
         }
         
-        if savings.value.futureValue <= 0.0 {
+        if savings.futureValue <= 0.0 {
             errorMessages.append("Future Value has to be greater than 0")
         }
         

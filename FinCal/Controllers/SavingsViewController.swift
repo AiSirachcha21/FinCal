@@ -7,18 +7,17 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
 
-class SavingFormFieldObservables {
-    var principalAmount: Observable<Optional<String>>?
-    var interest: Observable<Optional<String>>?
-    var duration: Observable<Optional<String>>?
-    var futureValue: Observable<Optional<String>>?
-    var numberOfPayments: Observable<Optional<String>>?
-    
-    init() {
-    }
-}
+//class SavingFormFieldObservables {
+//    var principalAmount: Observable<Optional<String>>?
+//    var interest: Observable<Optional<String>>?
+//    var duration: Observable<Optional<String>>?
+//    var futureValue: Observable<Optional<String>>?
+//    var numberOfPayments: Observable<Optional<String>>?
+//    
+//    init() {
+//    }
+//}
 
 class SavingsViewController: UIViewController {
     
@@ -64,15 +63,15 @@ class SavingsViewController: UIViewController {
                 print(missingFieldTag)
                 switch missingFieldTag {
                     case TextFieldID.futureValue.rawValue:
-                        let futureValue = savingsViewModel.savings.value.getFutureValue()
+                        let futureValue = savingsViewModel.savings.getFutureValue()
                         futureValueTF.text = futureValue.description
-                        savingsViewModel.savings.value.futureValue = futureValue
+                        savingsViewModel.savings.futureValue = futureValue
                         break
                     case TextFieldID.interest.rawValue:
-                        let savings = savingsViewModel.savings.value
-                        let interest = savingsViewModel.savings.value.getRate(initialAmount: savings.principalAmount, futureAmount: savings.futureValue, duration: savings.duration)
+                        let savings = savingsViewModel.savings
+                        let interest = savingsViewModel.savings.getRate(initialAmount: savings.principalAmount, futureAmount: savings.futureValue, duration: savings.duration)
                         interestTF.text = interest.roundTo(decimalPlaces: 2).description
-                        savingsViewModel.savings.value.interest = interest.roundTo(decimalPlaces: 2)
+                        savingsViewModel.savings.interest = interest.roundTo(decimalPlaces: 2)
                     default:
                         break
                 }
@@ -83,19 +82,19 @@ class SavingsViewController: UIViewController {
     func parseTextFieldValueToObject(_ field: UITextField) {
         switch field.tag {
             case TextFieldID.futureValue.rawValue:
-                savingsViewModel.savings.value.futureValue = Double(field.text!) ?? 0.0
+                savingsViewModel.savings.futureValue = Double(field.text!) ?? 0.0
                 break
                 
             case TextFieldID.principalAmount.rawValue:
-                savingsViewModel.savings.value.principalAmount = Double(field.text!) ?? 0.0
+                savingsViewModel.savings.principalAmount = Double(field.text!) ?? 0.0
                 break
                 
             case TextFieldID.interest.rawValue:
-                savingsViewModel.savings.value.interest = Double(field.text!) ?? 0.0
+                savingsViewModel.savings.interest = Double(field.text!) ?? 0.0
                 break
                 
             case TextFieldID.duration.rawValue:
-                savingsViewModel.savings.value.duration = Int(field.text!) ?? 0
+                savingsViewModel.savings.duration = Int(field.text!) ?? 0
                 break
             
             default:
