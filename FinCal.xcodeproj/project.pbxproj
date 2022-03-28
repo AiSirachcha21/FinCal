@@ -14,8 +14,11 @@
 		06837A0227DA2D820012D45A /* Payable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0127DA2D820012D45A /* Payable.swift */; };
 		06837A0627DA31660012D45A /* Savings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0527DA31650012D45A /* Savings.swift */; };
 		06837A0827DA32350012D45A /* CompoundSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0727DA32350012D45A /* CompoundSavings.swift */; };
+		068CC57D27F1804300C6D9B7 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068CC57C27F1804300C6D9B7 /* UserDefaults+Extensions.swift */; };
 		069171AD27D78CA70071ECE3 /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AC27D78CA70071ECE3 /* SavingsViewController.swift */; };
 		069171AF27D78CF20071ECE3 /* CompoundInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */; };
+		06BA20FD27EC25EC004EAE19 /* SimpleSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BA20FC27EC25EC004EAE19 /* SimpleSavingsViewModel.swift */; };
+		06BA20FF27EC3C23004EAE19 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BA20FE27EC3C23004EAE19 /* ValidationResult.swift */; };
 		06E0449C27DAFEF7007CBA8C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */; };
 		06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */; };
 		06E044A027DB412C007CBA8C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */; };
@@ -36,8 +39,11 @@
 		06837A0527DA31650012D45A /* Savings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Savings.swift; sourceTree = "<group>"; };
 		06837A0727DA32350012D45A /* CompoundSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSavings.swift; sourceTree = "<group>"; };
 		06837A0927DA359C0012D45A /* FormulaTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FormulaTests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		068CC57C27F1804300C6D9B7 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		069171AC27D78CA70071ECE3 /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
 		069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundInterestViewController.swift; sourceTree = "<group>"; };
+		06BA20FC27EC25EC004EAE19 /* SimpleSavingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSavingsViewModel.swift; sourceTree = "<group>"; };
+		06BA20FE27EC3C23004EAE19 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
 		06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 				06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */,
 				06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */,
 				06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */,
+				068CC57C27F1804300C6D9B7 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -92,6 +99,22 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		06BA20FB27EC25BE004EAE19 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				06BA20FC27EC25EC004EAE19 /* SimpleSavingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		06BA210027EC3C2B004EAE19 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				06BA20FE27EC3C23004EAE19 /* ValidationResult.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		06FC9CB827D4780A0083266B = {
@@ -116,6 +139,7 @@
 		06FC9CC327D4780A0083266B /* FinCal */ = {
 			isa = PBXGroup;
 			children = (
+				06BA20FB27EC25BE004EAE19 /* ViewModels */,
 				06837A0927DA359C0012D45A /* FormulaTests.playground */,
 				068379FD27D9FD0D0012D45A /* Extensions */,
 				069171B027D79A8B0071ECE3 /* Components */,
@@ -138,6 +162,7 @@
 				06FC9CDC27D48C340083266B /* Constants.swift */,
 				06837A0727DA32350012D45A /* CompoundSavings.swift */,
 				064B8D6827DE7F9400AE4DD5 /* SimpleSavings.swift */,
+				06BA210027EC3C2B004EAE19 /* Common */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,9 +311,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				06E044A027DB412C007CBA8C /* UITextField+Extensions.swift in Sources */,
+				068CC57D27F1804300C6D9B7 /* UserDefaults+Extensions.swift in Sources */,
 				06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */,
+				06BA20FD27EC25EC004EAE19 /* SimpleSavingsViewModel.swift in Sources */,
 				06E0449C27DAFEF7007CBA8C /* Double+Extensions.swift in Sources */,
 				06837A0827DA32350012D45A /* CompoundSavings.swift in Sources */,
+				06BA20FF27EC3C23004EAE19 /* ValidationResult.swift in Sources */,
 				06FC9CC927D4780A0083266B /* LoanMortgageViewController.swift in Sources */,
 				069171AD27D78CA70071ECE3 /* SavingsViewController.swift in Sources */,
 				06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */,
