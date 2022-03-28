@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class SimpleSavings: CustomStringConvertible {
     init() {
@@ -30,16 +31,12 @@ class SimpleSavings: CustomStringConvertible {
         return futureVal
     }
 
-    func getRate(updateOriginal: Bool = false) -> Double {
+    func getRate(initialAmount: Double, futureAmount: Double, duration: Int) -> Double {
         var newInterest: Double = 0.0
 
-        let innerDenominator = self.principalAmount > 0 ? self.futureValue / self.principalAmount : 0
-        let inner = pow(self.futureValue / innerDenominator, 1 / Double(self.compoundsPerYear * self.duration)) - 1
+        let innerDenominator = initialAmount == 0 ? 1 : futureAmount / initialAmount
+        let inner = pow(futureAmount / innerDenominator, 1 / Double(self.compoundsPerYear * duration)) - 1
         newInterest = Double(self.compoundsPerYear) * inner
-
-        if updateOriginal {
-            self.interest = newInterest
-        }
 
         return newInterest
     }
