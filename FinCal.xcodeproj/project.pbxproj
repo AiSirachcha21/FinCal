@@ -70,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0621E3AC27F8D01F00029743 /* FieldSelectorSheetView */ = {
+			isa = PBXGroup;
+			children = (
+				062552D427F4711A00A83C00 /* FieldSelectorSheetViewController.swift */,
+			);
+			path = FieldSelectorSheetView;
+			sourceTree = "<group>";
+		};
 		068379FD27D9FD0D0012D45A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +102,7 @@
 		069171B027D79A8B0071ECE3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0621E3AC27F8D01F00029743 /* FieldSelectorSheetView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -168,7 +177,6 @@
 				06FC9CC827D4780A0083266B /* LoanMortgageViewController.swift */,
 				069171AC27D78CA70071ECE3 /* SavingsViewController.swift */,
 				069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */,
-				062552D427F4711A00A83C00 /* FieldSelectorSheetViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

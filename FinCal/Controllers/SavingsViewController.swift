@@ -36,6 +36,11 @@ class SavingsViewController: UIViewController {
 
     private lazy var savingsViewModel = SimpleSavingsViewModel()
     private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
+    private lazy var selectableFields:[(name:String, id:TextFieldID)] = [
+        ("Principal Amount", TextFieldID.principalAmount),
+        ("Future Value", TextFieldID.futureValue),
+        ("Interest", TextFieldID.interest)
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +67,7 @@ class SavingsViewController: UIViewController {
         }
 
         answerTF.isEnabled = false
-        pickSolvingFieldBtn.subtitleLabel?.text = "Principal Amount"
+        pickSolvingFieldBtn.subtitleLabel?.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
         exposeRequiredFields(missingFieldTag: missingField)
         
     }
@@ -88,12 +93,6 @@ class SavingsViewController: UIViewController {
 
     /// Opens a sheet that allows the user to pick the field they want to solve for
     @objc func openFieldToSolveSelectionSheet() {
-        let selectableFields = [
-            ("Principal Amount", TextFieldID.principalAmount),
-            ("Future Value", TextFieldID.futureValue),
-            ("Interest", TextFieldID.interest)
-        ]
-        
         fieldSelectorVC.fields = [(name:String, id:TextFieldID)](selectableFields)
         fieldSelectorVC.previousValue = fieldSelectorVC.selectedValue
         fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
@@ -102,6 +101,12 @@ class SavingsViewController: UIViewController {
             
             if let newMissingFieldTag = selectedValue?.rawValue {
                 self?.missingField = newMissingFieldTag
+            } else {
+                /* Do this to make sure that the button doesn't use the default text when you click cancel
+                  * after attempting to pick field on first time */
+                self?.pickSolvingFieldBtn.subtitleLabel?.text = self?.selectableFields.first(
+                    where: {$0.id.rawValue == self?.missingField }
+                )?.name
             }
         }
 
@@ -128,7 +133,6 @@ class SavingsViewController: UIViewController {
                 break
             case TextFieldID.interest.rawValue:
                 let interest = savingsViewModel.savings.getRate()
-                print(interest)
                 answerTF.text = "\(interest.roundTo(decimalPlaces: 2) * 100)%"
                 savingsViewModel.savings.interest = interest.roundTo(decimalPlaces: 2)
             case TextFieldID.principalAmount.rawValue:
