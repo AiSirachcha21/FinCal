@@ -6,120 +6,152 @@
 //
 
 import UIKit
-import RxSwift
-
-//class SavingFormFieldObservables {
-//    var principalAmount: Observable<Optional<String>>?
-//    var interest: Observable<Optional<String>>?
-//    var duration: Observable<Optional<String>>?
-//    var futureValue: Observable<Optional<String>>?
-//    var numberOfPayments: Observable<Optional<String>>?
-//    
-//    init() {
-//    }
-//}
 
 class SavingsViewController: UIViewController {
-    
+
+    @IBOutlet var principalAmountContainer: UIStackView!
+    @IBOutlet var interestContainer: UIStackView!
+    @IBOutlet var futureValueContainer: UIStackView!
+    @IBOutlet var numberOfPaymentsContainer: UIStackView!
+
+    @IBOutlet var fieldContainers: [UIStackView]!
+
     @IBOutlet var principalAmountTF: UITextField!
     @IBOutlet var interestTF: UITextField!
     @IBOutlet var futureValueTF: UITextField!
     @IBOutlet var numberOfPaymentsTF: UITextField!
+
+    @IBOutlet var solvingFieldLabel: UILabel!
+
+    @IBOutlet var answerTF: UITextField!
+
     @IBOutlet var onScreenAlertText: UILabel!
-    
+    @IBOutlet var pickSolvingFieldBtn: UIButton!
+    @IBOutlet var savingsViewScrollView: UIScrollView!
+
     @IBOutlet var textFields: [UITextField]!
-    
-    private var savingsViewModel = SimpleSavingsViewModel()
-    private var disposeBag = DisposeBag()
-    
-    private var insufficientFields = true
-    
+
+    @objc dynamic var missingField = TextFieldID.principalAmount.rawValue
+    private var missingFieldObserver: NSKeyValueObservation?
+
+    private let savingsViewModel = SimpleSavingsViewModel()
+    private let fieldSelectorVC = FieldSelectorSheetViewControlller()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.hideKeyboardWhenSwipeDown()
-        
+
         title = "Savings"
-        
-        onScreenAlertText.isHidden = insufficientFields
-        onScreenAlertText.text = "One or more fields are required to do the calculation"
-        onScreenAlertText.textColor = UIColor.red
-        
-        
+
+        onScreenAlertText.isHidden = false
+        pickSolvingFieldBtn.addTarget(self, action: #selector(openFieldToSolveSelectionSheet), for: .touchDown)
+
+        // To push view up when keyboard shows/hides
+        NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardHides), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+
         // TODO: Action needs to be implemented here for the "Help View"
         let questionImage = UIImage(systemName: "questionmark.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .default))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: questionImage, style: .plain, target: self, action: nil)
-    }
-    
-    
-    @IBAction func onEdit(_ sender: UITextField) {
-        parseTextFieldValueToObject(sender)
-        hasSufficientFieldsForCalculation(fieldsToCheck: textFields)
-        
-        if !insufficientFields {
-            let missingField = textFields.first(where: { $0.text!.isEmpty })
-            
-            if let missingFieldTag = missingField?.tag  {
-                print(missingFieldTag)
-                switch missingFieldTag {
-                    case TextFieldID.futureValue.rawValue:
-                        let futureValue = savingsViewModel.savings.getFutureValue()
-                        futureValueTF.text = futureValue.description
-                        savingsViewModel.savings.futureValue = futureValue
-                        break
-                    case TextFieldID.interest.rawValue:
-                        let savings = savingsViewModel.savings
-                        let interest = savingsViewModel.savings.getRate(initialAmount: savings.principalAmount, futureAmount: savings.futureValue, duration: savings.duration)
-                        interestTF.text = interest.roundTo(decimalPlaces: 2).description
-                        savingsViewModel.savings.interest = interest.roundTo(decimalPlaces: 2)
-                    default:
-                        break
-                }
-            }
+
+        // Watches for change in the selected missing field
+        missingFieldObserver = observe(\.missingField, options: [.new]) { [weak self] obj, change in
+            self?.exposeRequiredFields(missingFieldTag: change.newValue!)
         }
+
+        answerTF.isEnabled = false
+        pickSolvingFieldBtn.subtitleLabel?.text = "Principal Amount"
+        exposeRequiredFields(missingFieldTag: missingField)
+        
     }
-    
-    func parseTextFieldValueToObject(_ field: UITextField) {
-        switch field.tag {
+
+    func exposeRequiredFields(missingFieldTag: Int) {
+        savingsViewModel.savings = SimpleSavings()
+
+        if let missingTFContainer = fieldContainers.first(where: { $0.arrangedSubviews.last?.tag == missingFieldTag }),
+           let missingTF = textFields.first(where: { $0.tag == missingFieldTag }),
+           let missingTFLabel = (missingTFContainer.arrangedSubviews.first as? UILabel)?.text {
+            missingTFContainer.isHidden = true
+            pickSolvingFieldBtn.subtitleLabel?.text = missingTFLabel
+            answerTF.text = missingTF.text
+            answerTF.placeholder = missingTF.placeholder
+        }
+
+        let remainingFieldContainers = fieldContainers.filter({ $0.arrangedSubviews.last?.tag != missingFieldTag })
+        remainingFieldContainers.forEach({
+            $0.isHidden = false
+        })
+    }
+
+    /// Opens a sheet that allows the user to pick the field they want to solve for
+    @objc func openFieldToSolveSelectionSheet() {
+        fieldSelectorVC.previousValue = fieldSelectorVC.selectedValue
+        fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
+        fieldSelectorVC.onCloseAction = { [weak self] selectedValue in
+            self?.savingsViewScrollView.isUserInteractionEnabled = true
+            self?.missingField = selectedValue.rawValue
+        }
+
+        if let sheet = fieldSelectorVC.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        }
+
+        savingsViewScrollView.isUserInteractionEnabled = false
+        present(fieldSelectorVC, animated: true, completion: nil)
+    }
+
+    @IBAction func onEdit(_ sender: UITextField) {
+        updateFieldState(sender)
+        
+        switch missingField {
             case TextFieldID.futureValue.rawValue:
-                savingsViewModel.savings.futureValue = Double(field.text!) ?? 0.0
+                let futureValue = savingsViewModel.savings.getFutureValue()
+                savingsViewModel.savings.futureValue = futureValue
+                answerTF.text = futureValue.description
                 break
-                
-            case TextFieldID.principalAmount.rawValue:
-                savingsViewModel.savings.principalAmount = Double(field.text!) ?? 0.0
-                break
-                
             case TextFieldID.interest.rawValue:
-                savingsViewModel.savings.interest = Double(field.text!) ?? 0.0
+                let interest = savingsViewModel.savings.getRate()
+                print(interest)
+                answerTF.text = "\(interest.roundTo(decimalPlaces: 2) * 100)%"
+                savingsViewModel.savings.interest = interest.roundTo(decimalPlaces: 2)
+            case TextFieldID.principalAmount.rawValue:
+                let principalAmount = savingsViewModel.savings.getPrincipalAmount()
+                principalAmountTF.text = principalAmount.roundTo(decimalPlaces: 2).description
+                savingsViewModel.savings.principalAmount = principalAmount
                 break
-                
-            case TextFieldID.duration.rawValue:
-                savingsViewModel.savings.duration = Int(field.text!) ?? 0
-                break
-            
             default:
                 break
         }
+
+
     }
-    
-    
-    func hasSufficientFieldsForCalculation(fieldsToCheck: [UITextField]) {
-        //TODO: Check for Future Value Calculation is not done here. Implement
-        //CHECK: Interest calculation seems to be working but changing the duration doesn't seem to affect it.
-        let canCalculateInitialAmount = savingsViewModel.canCalculateInitialAmount()
-        let canCalculateInterest = savingsViewModel.canCalculateInterest()
-        let canCalculateDurationRequiredInYears = savingsViewModel.canCalculateDurationRequiredInYears()
-        let allFieldsAreEmpty = [futureValueTF,numberOfPaymentsTF,principalAmountTF,interestTF].allSatisfy({ $0.text!.isEmpty })
-        
-        if allFieldsAreEmpty || !canCalculateInitialAmount.result || !canCalculateInterest.result || !canCalculateDurationRequiredInYears.result {
-            insufficientFields = true
-            onScreenAlertText.isHidden = false
-            return
+
+    func updateFieldState(_ field: UITextField) {
+        switch field.tag {
+        case TextFieldID.futureValue.rawValue:
+            savingsViewModel.savings.futureValue = Double(field.text!) ?? 0.0
+            break
+
+        case TextFieldID.principalAmount.rawValue:
+            savingsViewModel.savings.principalAmount = Double(field.text!) ?? 0.0
+            break
+
+        case TextFieldID.interest.rawValue:
+            savingsViewModel.savings.interest = Double(Double(field.text!) ?? 0.0 / 100.0)
+            break
+
+        case TextFieldID.duration.rawValue:
+            savingsViewModel.savings.duration = Int(field.text!) ?? 0
+            break
+
+        default:
+            break
         }
-        
-        insufficientFields = false
-        onScreenAlertText.isHidden = true
     }
-    
-    
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		062552D527F4711A00A83C00 /* FieldSelectorSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062552D427F4711A00A83C00 /* FieldSelectorSheetViewController.swift */; };
 		0630097127E0A9EB0044A688 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0630097027E0A9EB0044A688 /* .swiftlint.yml */; };
 		064B8D6927DE7F9400AE4DD5 /* SimpleSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064B8D6827DE7F9400AE4DD5 /* SimpleSavings.swift */; };
 		068379FF27D9FD210012D45A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		062552D427F4711A00A83C00 /* FieldSelectorSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSelectorSheetViewController.swift; sourceTree = "<group>"; };
 		0630097027E0A9EB0044A688 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		064B8D6827DE7F9400AE4DD5 /* SimpleSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSavings.swift; sourceTree = "<group>"; };
 		068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				06FC9CC827D4780A0083266B /* LoanMortgageViewController.swift */,
 				069171AC27D78CA70071ECE3 /* SavingsViewController.swift */,
 				069171AE27D78CF20071ECE3 /* CompoundInterestViewController.swift */,
+				062552D427F4711A00A83C00 /* FieldSelectorSheetViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */,
 				06837A0627DA31660012D45A /* Savings.swift in Sources */,
 				068379FF27D9FD210012D45A /* UIViewController+Extensions.swift in Sources */,
+				062552D527F4711A00A83C00 /* FieldSelectorSheetViewController.swift in Sources */,
 				06FC9CC727D4780A0083266B /* SceneDelegate.swift in Sources */,
 				06FC9CDD27D48C340083266B /* Constants.swift in Sources */,
 				06837A0227DA2D820012D45A /* Payable.swift in Sources */,
