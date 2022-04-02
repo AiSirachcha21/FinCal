@@ -13,7 +13,7 @@ enum ScreenNames {
     static let compoundInterestScreen = "Compound Savings"
 }
 
-enum TextFieldID: Int {
+@objc enum TextFieldID: Int {
     case futureValue = 1
     case interest = 2
     case principalAmount = 3
