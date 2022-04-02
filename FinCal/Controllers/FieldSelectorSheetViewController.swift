@@ -7,81 +7,93 @@
 
 import UIKit
 
+/// Reusable Picker component for selecting field needed to be found
 class FieldSelectorSheetViewControlller : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    // Properties required from caller
+    
     var selectedValue: TextFieldID?
+    
+    /// Previous value of picker to maintain state on cancel
     var previousValue: TextFieldID?
-    var onCloseAction: ((_ selectedValue: TextFieldID)->())?
     
-    // Data for picker
-    let simpleSavingsFields = [(name:String, id:TextFieldID)](arrayLiteral: ("Principal Amount", TextFieldID.principalAmount), ("Future Value", TextFieldID.futureValue), ("Interest", TextFieldID.interest))
-    
-    // UI Elements
-    var pickerView:UIPickerView?
-    var pickerContainer = UIStackView()
+    /// Action to be completed after submitting selection
+    var onCloseAction: ((_ selectedValue: TextFieldID?)->())?
+    var fields: [(name:String, id:TextFieldID)]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickerView = UIPickerView()
-        
-        let confirmBtn = UIButton()
-        let cancelBtn = UIButton()
-        
-        cancelBtn.configuration = .tinted()
-        cancelBtn.tintColor = UIColor.systemRed
-        cancelBtn.setTitle("Cancel", for: .normal)
-        
-        confirmBtn.configuration = .filled()
-        confirmBtn.setTitle("Confirm", for: .normal)
-        
-        confirmBtn.addTarget(self, action: #selector(onConfirm), for: .touchDown)
-        cancelBtn.addTarget(self, action: #selector(onCancel), for: .touchDown)
-        
-        let btnPanel = UIStackView(arrangedSubviews: [cancelBtn, confirmBtn])
-        btnPanel.axis = .horizontal
-        btnPanel.spacing = 4.0
-        
-        pickerContainer.axis = .vertical
-        pickerContainer.translatesAutoresizingMaskIntoConstraints = false
-        pickerContainer.layer.borderColor = UIColor.blue.cgColor
-        pickerContainer.layer.borderWidth = 1.0
-        
-        if let picker = pickerView {
-            picker.dataSource = self
-            picker.delegate = self
-            picker.selectRow(simpleSavingsFields.firstIndex(where: {$0.id == selectedValue})!, inComponent: 0, animated: true)
+        lazy var confirmBtn: UIButton = {
+            let view = UIButton()
+            view.configuration = .filled()
+            view.setTitle("Confirm", for: .normal)
+            view.addTarget(self, action: #selector(onConfirm), for: .touchDown)
             
-            pickerContainer.addArrangedSubview(picker)
-            pickerContainer.addArrangedSubview(btnPanel)
+            return view
+        }()
+        
+        lazy var cancelBtn: UIButton = {
+            let view = UIButton()
+            view.configuration = .tinted()
+            view.tintColor = UIColor.systemRed
+            view.setTitle("Cancel", for: .normal)
+            view.addTarget(self, action: #selector(onCancel), for: .touchDown)
             
-            view.backgroundColor = UIColor.white
-            view.addSubview(pickerContainer)
+            return view
+        }()
+        
+        lazy var btnPanel: UIStackView = {
+            let view = UIStackView(arrangedSubviews: [cancelBtn, confirmBtn])
+            view.axis = .horizontal
+            view.spacing = 4.0
             
-            NSLayoutConstraint.activate([
-                pickerContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                pickerContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                pickerContainer.topAnchor.constraint(equalTo: view.topAnchor, constant: 5.0)
-            ])
-        }
+            return view
+        }()
+        
+        lazy var pickerView: UIPickerView = {
+            let view = UIPickerView()
+            view.dataSource = self
+            view.delegate = self
+            view.selectRow(fields?.firstIndex(where: {$0.id == selectedValue})! ?? 0, inComponent: 0, animated: true)
+            
+            return view
+        }()
+        
+        lazy var pickerContainer: UIStackView = {
+            let view = UIStackView(arrangedSubviews: [pickerView, btnPanel])
+            view.axis = .vertical
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.layer.borderColor = UIColor.blue.cgColor
+            view.layer.borderWidth = 1.0
+            
+            return view
+        }()
+        
+        view.backgroundColor = UIColor.white
+        view.addSubview(pickerContainer)
+        
+        NSLayoutConstraint.activate([
+            pickerContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pickerContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pickerContainer.topAnchor.constraint(equalTo: view.topAnchor, constant: 5.0)
+        ])
     }
     
     @objc func onConfirm() {
-        onCloseAction?(selectedValue ?? TextFieldID.futureValue)
+        onCloseAction?(selectedValue)
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc func onCancel(){
-        onCloseAction?(previousValue ?? TextFieldID.futureValue)
+        onCloseAction?(previousValue)
         self.dismiss(animated: true, completion: nil)
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return simpleSavingsFields.count
+        return fields?.count ?? 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return simpleSavingsFields[row].name
+        return fields?[row].name
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -89,7 +101,7 @@ class FieldSelectorSheetViewControlller : UIViewController, UIPickerViewDelegate
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedValue = simpleSavingsFields[row].id
+        selectedValue = fields?[row].id
         view.resignFirstResponder()
     }
     

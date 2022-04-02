@@ -31,11 +31,11 @@ class SavingsViewController: UIViewController {
 
     @IBOutlet var textFields: [UITextField]!
 
-    @objc dynamic var missingField = TextFieldID.principalAmount.rawValue
+    @objc dynamic var missingField = TextFieldID.futureValue.rawValue
     private var missingFieldObserver: NSKeyValueObservation?
 
-    private let savingsViewModel = SimpleSavingsViewModel()
-    private let fieldSelectorVC = FieldSelectorSheetViewControlller()
+    private lazy var savingsViewModel = SimpleSavingsViewModel()
+    private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +68,7 @@ class SavingsViewController: UIViewController {
     }
 
     func exposeRequiredFields(missingFieldTag: Int) {
+        /// Evaluate: This may not be needed. Once completed, check whether this makes a difference when you remove it.
         savingsViewModel.savings = SimpleSavings()
 
         if let missingTFContainer = fieldContainers.first(where: { $0.arrangedSubviews.last?.tag == missingFieldTag }),
@@ -87,11 +88,21 @@ class SavingsViewController: UIViewController {
 
     /// Opens a sheet that allows the user to pick the field they want to solve for
     @objc func openFieldToSolveSelectionSheet() {
+        let selectableFields = [
+            ("Principal Amount", TextFieldID.principalAmount),
+            ("Future Value", TextFieldID.futureValue),
+            ("Interest", TextFieldID.interest)
+        ]
+        
+        fieldSelectorVC.fields = [(name:String, id:TextFieldID)](selectableFields)
         fieldSelectorVC.previousValue = fieldSelectorVC.selectedValue
         fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
         fieldSelectorVC.onCloseAction = { [weak self] selectedValue in
             self?.savingsViewScrollView.isUserInteractionEnabled = true
-            self?.missingField = selectedValue.rawValue
+            
+            if let newMissingFieldTag = selectedValue?.rawValue {
+                self?.missingField = newMissingFieldTag
+            }
         }
 
         if let sheet = fieldSelectorVC.sheetPresentationController {
@@ -128,8 +139,6 @@ class SavingsViewController: UIViewController {
             default:
                 break
         }
-
-
     }
 
     func updateFieldState(_ field: UITextField) {
