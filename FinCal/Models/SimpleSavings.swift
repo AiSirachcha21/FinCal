@@ -17,21 +17,32 @@ class SimpleSavings: CustomStringConvertible {
     var duration: Int = 1
     var interest: Double = 0.0
     var compoundsPerYear: Int = 12
+    var monthlyPayment: Double = 0.0
     
     
     public var description: String { return "\(SimpleSavings.Type.self)(futureValue: \(self.futureValue), principalAmount: \(self.principalAmount), interest: \(self.interest), duration: \(self.duration))" }
 
-    func getFutureValue(updateOriginal: Bool = false) -> Double {
-        let inner = 1 + Double(self.interest / 100) / Double(self.compoundsPerYear)
+    func getFutureValue() -> Double {
+        let inner = 1 + interest / Double(self.compoundsPerYear)
         let futureVal = principalAmount * pow(inner, Double(compoundsPerYear) * Double(duration))
-
-        if updateOriginal {
-            self.futureValue = futureVal
-        }
 
         return futureVal
     }
-
+    
+    func getFutureValue(withMonthlyPayments: Bool) -> Double {
+        if !withMonthlyPayments {
+            return getFutureValue()
+        }
+        
+        let numerator = pow(1 + Double(interest / Double(compoundsPerYear)), Double(compoundsPerYear * duration)) - 1
+        let denominator = interest / Double(compoundsPerYear)
+        let futureVal = monthlyPayment * (numerator/denominator)
+        
+        let compoundInterest = principalAmount * pow(1 + interest/Double(compoundsPerYear), Double(compoundsPerYear * duration))
+        
+        return futureVal + compoundInterest
+    }
+    
     func getRate() -> Double {
         let innerDenominator = futureValue / principalAmount
         let inner = pow(innerDenominator, 1 / Double(compoundsPerYear * duration)) - 1.0
@@ -40,15 +51,22 @@ class SimpleSavings: CustomStringConvertible {
         return newInterest
     }
     
+    func getRate(withMonthlyPayments: Bool) -> Double {
+        if !withMonthlyPayments {
+            return getRate()
+        }
+        
+        let innerDenominator = futureValue / principalAmount
+        let inner = pow(innerDenominator, 1 / Double(compoundsPerYear * duration)) - 1.0
+        let newInterest = Double(compoundsPerYear) * inner
+        
+        return newInterest
+    }
+    
     func getPrincipalAmount() -> Double {
-        let numerator = futureValue
         let denominator = pow(1 + interest/Double(compoundsPerYear), Double(compoundsPerYear) + Double(duration))
-        let newPrincipalAmount = numerator/denominator
+        let newPrincipalAmount = futureValue/denominator
         
         return newPrincipalAmount
-    }
-
-    func getInterestRateAsPercentage() -> Double {
-        return (self.interest * 100).roundTo(decimalPlaces: 2)
     }
 }

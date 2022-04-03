@@ -9,18 +9,22 @@ import UIKit
 
 class SavingsViewController: UIViewController {
 
+    @IBOutlet var compoundSavingSwitcher: UISegmentedControl!
+    
     @IBOutlet var principalAmountContainer: UIStackView!
     @IBOutlet var interestContainer: UIStackView!
     @IBOutlet var futureValueContainer: UIStackView!
     @IBOutlet var numberOfPaymentsContainer: UIStackView!
-
+    @IBOutlet var monthlyPaymentContainer: UIStackView!
+    
     @IBOutlet var fieldContainers: [UIStackView]!
 
     @IBOutlet var principalAmountTF: UITextField!
     @IBOutlet var interestTF: UITextField!
     @IBOutlet var futureValueTF: UITextField!
     @IBOutlet var numberOfPaymentsTF: UITextField!
-
+    @IBOutlet var monthlyPaymentTF: UITextField!
+    
     @IBOutlet var solvingFieldLabel: UILabel!
 
     @IBOutlet var answerTF: UITextField!
@@ -33,6 +37,8 @@ class SavingsViewController: UIViewController {
 
     @objc dynamic var missingField = TextFieldID.futureValue.rawValue
     private var missingFieldObserver: NSKeyValueObservation?
+    
+    private var hasMonthlyPayments = false
 
     private lazy var savingsViewModel = SimpleSavingsViewModel()
     private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
@@ -46,7 +52,12 @@ class SavingsViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.hideKeyboardWhenSwipeDown()
-
+        
+        // Text color for Segemented Control
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+        
         title = "Savings"
 
         onScreenAlertText.isHidden = false
@@ -65,17 +76,19 @@ class SavingsViewController: UIViewController {
         missingFieldObserver = observe(\.missingField, options: [.new]) { [weak self] obj, change in
             self?.exposeRequiredFields(missingFieldTag: change.newValue!)
         }
-
+        
         answerTF.isEnabled = false
         pickSolvingFieldBtn.subtitleLabel?.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
         exposeRequiredFields(missingFieldTag: missingField)
-        
+    }
+    
+    @IBAction func changeSavingsType() {
+        hasMonthlyPayments = compoundSavingSwitcher.selectedSegmentIndex == 1
+        exposeRequiredFields(missingFieldTag: missingField)
+        calculateMissingField()
     }
 
     func exposeRequiredFields(missingFieldTag: Int) {
-        /// Evaluate: This may not be needed. Once completed, check whether this makes a difference when you remove it.
-        savingsViewModel.savings = SimpleSavings()
-
         if let missingTFContainer = fieldContainers.first(where: { $0.arrangedSubviews.last?.tag == missingFieldTag }),
            let missingTF = textFields.first(where: { $0.tag == missingFieldTag }),
            let missingTFLabel = (missingTFContainer.arrangedSubviews.first as? UILabel)?.text {
@@ -83,12 +96,14 @@ class SavingsViewController: UIViewController {
             pickSolvingFieldBtn.subtitleLabel?.text = missingTFLabel
             answerTF.text = missingTF.text
             answerTF.placeholder = missingTF.placeholder
+            
+            fieldContainers
+                .filter({ $0.arrangedSubviews.last?.tag != missingFieldTag })
+                .forEach({ $0.isHidden = false })
+            
+            monthlyPaymentTF.isEnabled = hasMonthlyPayments && missingTF.tag != TextFieldID.monthlyPayments.rawValue
+            monthlyPaymentContainer.isHidden = !hasMonthlyPayments
         }
-
-        let remainingFieldContainers = fieldContainers.filter({ $0.arrangedSubviews.last?.tag != missingFieldTag })
-        remainingFieldContainers.forEach({
-            $0.isHidden = false
-        })
     }
 
     /// Opens a sheet that allows the user to pick the field they want to solve for
@@ -123,48 +138,29 @@ class SavingsViewController: UIViewController {
     }
 
     @IBAction func onEdit(_ sender: UITextField) {
-        updateFieldState(sender)
-        
+        savingsViewModel.updateModelState(sender)
+        calculateMissingField()
+    }
+    
+    func calculateMissingField(){
         switch missingField {
             case TextFieldID.futureValue.rawValue:
-                let futureValue = savingsViewModel.savings.getFutureValue()
+                let futureValue = savingsViewModel.calculateFutureValue(withMonthlyPayments: hasMonthlyPayments)
                 savingsViewModel.savings.futureValue = futureValue
-                answerTF.text = futureValue.description
+                answerTF.text = futureValue.roundTo(decimalPlaces: 2).description
                 break
             case TextFieldID.interest.rawValue:
-                let interest = savingsViewModel.savings.getRate()
-                answerTF.text = "\(interest.roundTo(decimalPlaces: 2) * 100)%"
+                let interest = savingsViewModel.calculateInterest(withMonthlyPayments: hasMonthlyPayments)
                 savingsViewModel.savings.interest = interest.roundTo(decimalPlaces: 2)
+                answerTF.text = "\(interest.roundTo(decimalPlaces: 2) * 100)%"
+                break
             case TextFieldID.principalAmount.rawValue:
                 let principalAmount = savingsViewModel.savings.getPrincipalAmount()
-                principalAmountTF.text = principalAmount.roundTo(decimalPlaces: 2).description
                 savingsViewModel.savings.principalAmount = principalAmount
+                principalAmountTF.text = principalAmount.roundTo(decimalPlaces: 2).description
                 break
             default:
                 break
-        }
-    }
-
-    func updateFieldState(_ field: UITextField) {
-        switch field.tag {
-        case TextFieldID.futureValue.rawValue:
-            savingsViewModel.savings.futureValue = Double(field.text!) ?? 0.0
-            break
-
-        case TextFieldID.principalAmount.rawValue:
-            savingsViewModel.savings.principalAmount = Double(field.text!) ?? 0.0
-            break
-
-        case TextFieldID.interest.rawValue:
-            savingsViewModel.savings.interest = Double(Double(field.text!) ?? 0.0 / 100.0)
-            break
-
-        case TextFieldID.duration.rawValue:
-            savingsViewModel.savings.duration = Int(field.text!) ?? 0
-            break
-
-        default:
-            break
         }
     }
 }

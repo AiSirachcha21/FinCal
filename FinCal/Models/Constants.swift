@@ -19,4 +19,5 @@ enum ScreenNames {
     case principalAmount = 3
     case numberOfPayments = 4
     case duration = 5
+    case monthlyPayments = 6
 }
