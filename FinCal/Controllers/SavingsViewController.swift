@@ -138,7 +138,7 @@ class SavingsViewController: UIViewController {
     }
 
     @IBAction func onEdit(_ sender: UITextField) {
-        savingsViewModel.updateModelState(sender)
+        savingsViewModel.updateModelStateUsing(sender)
         calculateMissingField()
     }
     

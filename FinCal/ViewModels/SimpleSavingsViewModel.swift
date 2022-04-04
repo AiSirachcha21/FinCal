@@ -18,7 +18,7 @@ class SimpleSavingsViewModel {
         return savings.getRate(withMonthlyPayments: hasMonthlyPayments)
     }
     
-    func updateModelState(_ field: UITextField) {
+    func updateModelStateUsing(_ field: UITextField) {
         switch field.tag {
             case TextFieldID.futureValue.rawValue:
                 savings.futureValue = Double(field.text!) ?? 0.0
