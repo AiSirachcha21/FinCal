@@ -5,10 +5,9 @@
 //  Created by Ryan Kuruppu on 14/3/22.
 //
 
-import Foundation
 import UIKit
 
-class SimpleSavings: CustomStringConvertible {
+class SimpleSavings: CustomStringConvertible, Payable {
     init() {
     }
 

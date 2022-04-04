@@ -15,8 +15,8 @@ protocol Payable {
     /// - Note: Must be provided in floating point format
     var interest: Double { get set }
 
-    /// Number of payments required in a year (in months)
-    var numberOfPayments: Int { get set }
+    /// Monthly Payment
+    var monthlyPayment: Double { get set }
 
     /// Duration of Payable in years
     var duration: Int { get set }
