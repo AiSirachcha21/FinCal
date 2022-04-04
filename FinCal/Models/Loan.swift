@@ -12,4 +12,21 @@ class Loan : Payable {
     var interest: Double = 0.0
     var monthlyPayment: Double = 0.0
     var duration: Int = 1
+    private let futureValue: Double = 0.0
+    
+    func getMortgagePayment() -> Double{
+        let monthlyInterest = Double(interest / 12)
+        let top = principalAmount * monthlyInterest * pow(1 + monthlyInterest, Double(duration))
+        let bot = pow(1 + monthlyInterest, Double(duration)) - 1
+        
+        return top / bot
+    }
+    
+    func getMortgageDuration() -> Double {
+        let monthlyInterest = interest / 12
+        let numerator = log(1 - monthlyInterest * principalAmount / monthlyPayment)
+        let denominator = log(1 + monthlyInterest)
+        
+        return abs(numerator / denominator)
+    }
 }

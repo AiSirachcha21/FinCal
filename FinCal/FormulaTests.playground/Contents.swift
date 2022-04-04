@@ -28,3 +28,28 @@ func calculatePrincipalAmount(futureValue: Double, interestRate: Double, payment
 
     return Double(round(principalAmount * 100) / 100)
 }
+
+func getMortgagePayment() -> Double {
+    let duration = 21
+    let ir = 0.05
+    
+    let monthlyInterest = Double(ir/12)
+    let top = 2000 * monthlyInterest * pow(1+monthlyInterest, Double(duration))
+    let bot = pow(1 + monthlyInterest,Double(duration)) - 1
+    
+    return top / bot
+}
+
+func getMortgageDuration() -> Double {
+    let ir:Double = 0.05 / 12
+    let payment:Double = 100.0
+    let loanAmount: Double = 2000.0
+    
+    let numerator = log(1 - (ir * loanAmount / payment))
+    let denominator = log(1 + ir)
+    
+    return abs(numerator / denominator)
+}
+
+getMortgagePayment()
+getMortgageDuration()

@@ -209,12 +209,10 @@
                         <outlet property="monthlyPaymentTF" destination="R2q-tE-xFC" id="G1T-RJ-1Fm"/>
                         <outlet property="numberOfPaymentsContainer" destination="iI7-W1-QYs" id="lp4-8y-61Q"/>
                         <outlet property="numberOfPaymentsTF" destination="0ys-fx-dZu" id="dXx-wc-qUM"/>
-                        <outlet property="onScreenAlertText" destination="lgk-fI-QVz" id="tmI-Z9-cGb"/>
                         <outlet property="pickSolvingFieldBtn" destination="c8M-5Y-oWL" id="Vuy-bL-IHo"/>
                         <outlet property="principalAmountContainer" destination="H8q-Md-jO5" id="FzZ-WQ-0Pu"/>
                         <outlet property="principalAmountTF" destination="i7s-7F-ceW" id="9OU-9o-4ta"/>
                         <outlet property="savingsViewScrollView" destination="pWk-CS-1St" id="BDz-Uf-Yzt"/>
-                        <outlet property="solvingFieldLabel" destination="Yb1-ua-tlc" id="EZa-X3-iE1"/>
                         <outletCollection property="textFields" destination="i7s-7F-ceW" collectionClass="NSMutableArray" id="J15-DI-b8m"/>
                         <outletCollection property="textFields" destination="1w2-di-kbM" collectionClass="NSMutableArray" id="yfX-Zc-EvB"/>
                         <outletCollection property="textFields" destination="7El-sR-ZGr" collectionClass="NSMutableArray" id="LaF-Yw-JbV"/>
@@ -391,6 +389,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KG7-s2-96C"/>
+                    <connections>
+                        <outlet property="changeFieldButton" destination="g4j-dG-Mow" id="aoc-qp-ynf"/>
+                        <outlet property="interestTF" destination="Yjo-hB-oQq" id="18r-BG-oXD"/>
+                        <outlet property="loanAmountTF" destination="ReS-Mr-amZ" id="IJR-fb-47J"/>
+                        <outlet property="monthlyPaymentTF" destination="i0N-tF-v8U" id="RGt-bS-QCR"/>
+                        <outlet property="numberOfPaymentsTF" destination="aOa-Fz-tFz" id="HZE-1h-9Jg"/>
+                        <outlet property="resultTF" destination="GAi-vc-1fR" id="xil-8n-PEF"/>
+                        <outletCollection property="textFields" destination="ReS-Mr-amZ" collectionClass="NSMutableArray" id="Com-Fg-UVM"/>
+                        <outletCollection property="textFields" destination="Yjo-hB-oQq" collectionClass="NSMutableArray" id="n4P-3M-vfg"/>
+                        <outletCollection property="textFields" destination="i0N-tF-v8U" collectionClass="NSMutableArray" id="8MT-S2-oq5"/>
+                        <outletCollection property="textFields" destination="aOa-Fz-tFz" collectionClass="NSMutableArray" id="O7A-mx-uIF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eg2-fU-xWF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

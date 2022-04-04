@@ -8,7 +8,16 @@
 import UIKit
 
 class LoanMortgageViewController: UIViewController {
-
+    @IBOutlet var resultTF: UITextField!
+    @IBOutlet var loanAmountTF: UITextField!
+    @IBOutlet var interestTF: UITextField!
+    @IBOutlet var monthlyPaymentTF: UITextField!
+    @IBOutlet var numberOfPaymentsTF: UITextField!
+    
+    @IBOutlet var textFields: [UITextField]!
+    
+    @IBOutlet var changeFieldButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -25,11 +25,8 @@ class SavingsViewController: UIViewController {
     @IBOutlet var numberOfPaymentsTF: UITextField!
     @IBOutlet var monthlyPaymentTF: UITextField!
     
-    @IBOutlet var solvingFieldLabel: UILabel!
-
     @IBOutlet var answerTF: UITextField!
 
-    @IBOutlet var onScreenAlertText: UILabel!
     @IBOutlet var pickSolvingFieldBtn: UIButton!
     @IBOutlet var savingsViewScrollView: UIScrollView!
 
@@ -40,7 +37,7 @@ class SavingsViewController: UIViewController {
     
     private var hasMonthlyPayments = false
 
-    private lazy var savingsViewModel = SimpleSavingsViewModel()
+    private lazy var savingsViewModel = SimpleSavingsViewModel(state: SimpleSavings())
     private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
     private lazy var selectableFields:[(name:String, id:TextFieldID)] = [
         ("Principal Amount", TextFieldID.principalAmount),
@@ -60,7 +57,6 @@ class SavingsViewController: UIViewController {
         
         title = "Savings"
 
-        onScreenAlertText.isHidden = false
         pickSolvingFieldBtn.addTarget(self, action: #selector(openFieldToSolveSelectionSheet), for: .touchDown)
 
         // To push view up when keyboard shows/hides
@@ -146,17 +142,17 @@ class SavingsViewController: UIViewController {
         switch missingField {
             case TextFieldID.futureValue.rawValue:
                 let futureValue = savingsViewModel.calculateFutureValue(withMonthlyPayments: hasMonthlyPayments)
-                savingsViewModel.savings.futureValue = futureValue
+                savingsViewModel.state.futureValue = futureValue
                 answerTF.text = futureValue.roundTo(decimalPlaces: 2).description
                 break
             case TextFieldID.interest.rawValue:
                 let interest = savingsViewModel.calculateInterest(withMonthlyPayments: hasMonthlyPayments)
-                savingsViewModel.savings.interest = interest.roundTo(decimalPlaces: 2)
+                savingsViewModel.state.interest = interest.roundTo(decimalPlaces: 2)
                 answerTF.text = "\(interest.roundTo(decimalPlaces: 2) * 100)%"
                 break
             case TextFieldID.principalAmount.rawValue:
-                let principalAmount = savingsViewModel.savings.getPrincipalAmount()
-                savingsViewModel.savings.principalAmount = principalAmount
+                let principalAmount = savingsViewModel.state.getPrincipalAmount()
+                savingsViewModel.state.principalAmount = principalAmount
                 principalAmountTF.text = principalAmount.roundTo(decimalPlaces: 2).description
                 break
             default:

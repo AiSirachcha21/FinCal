@@ -7,38 +7,36 @@
 
 import UIKit
 
-class SimpleSavingsViewModel {
-    var savings = SimpleSavings()
-    
+class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
     func calculateFutureValue(withMonthlyPayments hasMonthlyPayments: Bool) -> Double {
-        return savings.getFutureValue(withMonthlyPayments: hasMonthlyPayments)
+        return state.getFutureValue(withMonthlyPayments: hasMonthlyPayments)
     }
     
     func calculateInterest(withMonthlyPayments hasMonthlyPayments: Bool) -> Double {
-        return savings.getRate(withMonthlyPayments: hasMonthlyPayments)
+        return state.getRate(withMonthlyPayments: hasMonthlyPayments)
     }
     
     func updateModelStateUsing(_ field: UITextField) {
         switch field.tag {
             case TextFieldID.futureValue.rawValue:
-                savings.futureValue = Double(field.text!) ?? 0.0
+                state.futureValue = Double(field.text!) ?? 0.0
                 break
                 
             case TextFieldID.principalAmount.rawValue:
-                savings.principalAmount = Double(field.text!) ?? 0.0
+                state.principalAmount = Double(field.text!) ?? 0.0
                 break
                 
             case TextFieldID.interest.rawValue:
                 let interest = Double(field.text!) ?? 0.0
-                savings.interest = interest / 100.0
+                state.interest = interest / 100.0
                 break
                 
             case TextFieldID.duration.rawValue:
-                savings.duration = Int(field.text!) ?? 0
+                state.duration = Int(field.text!) ?? 0
                 break
                 
             case TextFieldID.monthlyPayments.rawValue:
-                savings.monthlyPayment = Double(field.text!) ?? 0.0
+                state.monthlyPayment = Double(field.text!) ?? 0.0
                 break
                 
             default:

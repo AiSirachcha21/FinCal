@@ -8,5 +8,5 @@
 import UIKit
 
 class LoanMortgageViewModel {
-    
+    var loan = Loan()
 }
