@@ -39,10 +39,10 @@ class SavingsViewController: UIViewController {
 
     private lazy var savingsViewModel = SimpleSavingsViewModel(state: SimpleSavings())
     private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
-    private lazy var selectableFields:[(name:String, id:TextFieldID)] = [
-        ("Principal Amount", TextFieldID.principalAmount),
-        ("Future Value", TextFieldID.futureValue),
-        ("Interest", TextFieldID.interest)
+    private lazy var selectableFields = [
+        TextFieldIdentity(name:"Principal Amount", id:TextFieldID.principalAmount),
+        TextFieldIdentity(name:"Future Value", id:TextFieldID.futureValue),
+        TextFieldIdentity(name:"Interest", id:TextFieldID.interest)
     ]
 
     override func viewDidLoad() {
@@ -57,16 +57,17 @@ class SavingsViewController: UIViewController {
         
         title = "Savings"
 
-        pickSolvingFieldBtn.addTarget(self, action: #selector(openFieldToSolveSelectionSheet), for: .touchDown)
-
+        // TODO: Action needs to be implemented here for the "Help View"
+        let questionImage = UIImage(systemName: "questionmark.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .default))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: questionImage, style: .plain, target: self, action: nil)
+        
+        
         // To push view up when keyboard shows/hides
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardHides), name: UIResponder.keyboardWillHideNotification, object: nil)
-
-
-        // TODO: Action needs to be implemented here for the "Help View"
-        let questionImage = UIImage(systemName: "questionmark.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .default))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: questionImage, style: .plain, target: self, action: nil)
+        
+        pickSolvingFieldBtn.addTarget(self, action: #selector(openFieldToSolveSelectionSheet), for: .touchDown)
 
         // Watches for change in the selected missing field
         missingFieldObserver = observe(\.missingField, options: [.new]) { [weak self] obj, change in
@@ -104,7 +105,7 @@ class SavingsViewController: UIViewController {
 
     /// Opens a sheet that allows the user to pick the field they want to solve for
     @objc func openFieldToSolveSelectionSheet() {
-        fieldSelectorVC.fields = [(name:String, id:TextFieldID)](selectableFields)
+        fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
         fieldSelectorVC.previousValue = fieldSelectorVC.selectedValue
         fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
         fieldSelectorVC.onCloseAction = { [weak self] selectedValue in
@@ -153,7 +154,7 @@ class SavingsViewController: UIViewController {
             case TextFieldID.principalAmount.rawValue:
                 let principalAmount = savingsViewModel.state.getPrincipalAmount()
                 savingsViewModel.state.principalAmount = principalAmount
-                principalAmountTF.text = principalAmount.roundTo(decimalPlaces: 2).description
+                answerTF.text = principalAmount.roundTo(decimalPlaces: 2).description
                 break
             default:
                 break

@@ -22,6 +22,7 @@
 		06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */; };
 		06E044A027DB412C007CBA8C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */; };
 		06FAB73C27FAC78E00834910 /* StatefulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FAB73B27FAC78E00834910 /* StatefulViewModel.swift */; };
+		06FAB73E27FB460E00834910 /* TextFieldIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FAB73D27FB460E00834910 /* TextFieldIdentity.swift */; };
 		06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC427D4780A0083266B /* AppDelegate.swift */; };
 		06FC9CC727D4780A0083266B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC627D4780A0083266B /* SceneDelegate.swift */; };
 		06FC9CC927D4780A0083266B /* LoanMortgageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC827D4780A0083266B /* LoanMortgageViewController.swift */; };
@@ -48,6 +49,7 @@
 		06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
 		06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		06FAB73B27FAC78E00834910 /* StatefulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewModel.swift; sourceTree = "<group>"; };
+		06FAB73D27FB460E00834910 /* TextFieldIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldIdentity.swift; sourceTree = "<group>"; };
 		06FC9CC127D4780A0083266B /* FinCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06FC9CC427D4780A0083266B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06FC9CC627D4780A0083266B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				06BA20FE27EC3C23004EAE19 /* ValidationResult.swift */,
+				06FAB73D27FB460E00834910 /* TextFieldIdentity.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				06E044A027DB412C007CBA8C /* UITextField+Extensions.swift in Sources */,
 				068CC57D27F1804300C6D9B7 /* UserDefaults+Extensions.swift in Sources */,
 				06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */,
+				06FAB73E27FB460E00834910 /* TextFieldIdentity.swift in Sources */,
 				06BA20FD27EC25EC004EAE19 /* SimpleSavingsViewModel.swift in Sources */,
 				06E0449C27DAFEF7007CBA8C /* Double+Extensions.swift in Sources */,
 				06BA20FF27EC3C23004EAE19 /* ValidationResult.swift in Sources */,

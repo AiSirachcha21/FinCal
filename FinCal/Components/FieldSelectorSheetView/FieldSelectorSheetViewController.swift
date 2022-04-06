@@ -17,7 +17,7 @@ class FieldSelectorSheetViewControlller : UIViewController, UIPickerViewDelegate
     
     /// Action to be completed after submitting selection
     var onCloseAction: ((_ selectedValue: TextFieldID?)->())?
-    var fields: [(name:String, id:TextFieldID)]?
+    var fields: [TextFieldIdentity]?
     
     override func viewDidLoad() {
         super.viewDidLoad()

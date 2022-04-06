@@ -8,6 +8,8 @@
 import UIKit
 
 extension UIViewController {
+    typealias FieldIdentity = (name:String, id:TextFieldID)
+    
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
