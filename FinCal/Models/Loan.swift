@@ -7,16 +7,18 @@
 
 import Foundation
 
-class Loan : Payable {
+class Loan : CustomStringConvertible, Payable {
     var principalAmount: Double = 0.0
     var interest: Double = 0.0
     var monthlyPayment: Double = 0.0
-    var duration: Int = 1
+    var duration: Double = 1.0
     private let futureValue: Double = 0.0
+    
+    public var description: String { return "\(Loan.Type.self)(principalAmount: \(self.principalAmount), interest: \(self.interest), monthlyPayment: \(self.monthlyPayment)), duration: \(self.duration))" }
     
     func getMortgagePayment() -> Double{
         let monthlyInterest = Double(interest / 12)
-        let top = principalAmount * monthlyInterest * pow(1 + monthlyInterest, Double(duration))
+        let top = principalAmount * monthlyInterest * pow(1 + monthlyInterest, duration)
         let bot = pow(1 + monthlyInterest, Double(duration)) - 1
         
         return top / bot
@@ -27,6 +29,6 @@ class Loan : Payable {
         let numerator = log(1 - monthlyInterest * principalAmount / monthlyPayment)
         let denominator = log(1 + monthlyInterest)
         
-        return abs(numerator / denominator)
+        return fabs((numerator / denominator).roundTo(decimalPlaces: 2))
     }
 }

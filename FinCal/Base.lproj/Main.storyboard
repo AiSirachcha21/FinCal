@@ -268,9 +268,6 @@
                                                         <rect key="frame" x="0.0" y="50.666666666666657" width="394" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                        <connections>
-                                                            <action selector="onEdit:" destination="i41-1y-qDf" eventType="editingChanged" id="cN5-OO-2vV"/>
-                                                        </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4j-dG-Mow">
                                                         <rect key="frame" x="0.0" y="94.666666666666671" width="394" height="46.333333333333329"/>
@@ -300,7 +297,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
-                                                                    <action selector="onEdit:" destination="i41-1y-qDf" eventType="editingChanged" id="LgO-xf-sAm"/>
+                                                                    <action selector="onEdit:" destination="ZAy-eZ-qWo" eventType="editingChanged" id="q1G-JV-Jdn"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -319,7 +316,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
-                                                                    <action selector="onEdit:" destination="i41-1y-qDf" eventType="editingChanged" id="z45-0R-y3u"/>
+                                                                    <action selector="onEdit:" destination="ZAy-eZ-qWo" eventType="editingChanged" id="3Wu-O1-BOF"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -338,7 +335,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
-                                                                    <action selector="onEdit:" destination="i41-1y-qDf" eventType="editingChanged" id="BLO-5z-lk8"/>
+                                                                    <action selector="onEdit:" destination="ZAy-eZ-qWo" eventType="editingChanged" id="bBL-nY-Xlm"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -346,18 +343,18 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dWO-BI-ljF">
                                                         <rect key="frame" x="0.0" y="253.00000000000003" width="394" height="64.333333333333343"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Number of Payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fo4-US-9wu">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fo4-US-9wu">
                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="20.333333333333332"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of Payments" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aOa-Fz-tFz">
+                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration (in years)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aOa-Fz-tFz">
                                                                 <rect key="frame" x="0.0" y="30.333333333333314" width="394" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
-                                                                    <action selector="onEdit:" destination="i41-1y-qDf" eventType="editingChanged" id="N1F-Ut-bRV"/>
+                                                                    <action selector="onEdit:" destination="ZAy-eZ-qWo" eventType="editingChanged" id="3Ir-XX-WRL"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -391,15 +388,24 @@
                     <navigationItem key="navigationItem" id="KG7-s2-96C"/>
                     <connections>
                         <outlet property="changeFieldButton" destination="g4j-dG-Mow" id="aoc-qp-ynf"/>
+                        <outlet property="interestContainer" destination="IJp-Uc-2yv" id="OtU-yE-Z6x"/>
                         <outlet property="interestTF" destination="Yjo-hB-oQq" id="18r-BG-oXD"/>
                         <outlet property="loanAmountTF" destination="ReS-Mr-amZ" id="IJR-fb-47J"/>
+                        <outlet property="loanContainer" destination="kLJ-7W-XFI" id="FiH-U4-i5A"/>
+                        <outlet property="monthlyPayment" destination="UWM-t0-bst" id="R8G-Xf-Zuv"/>
                         <outlet property="monthlyPaymentTF" destination="i0N-tF-v8U" id="RGt-bS-QCR"/>
+                        <outlet property="numberOfPaymentsContainer" destination="dWO-BI-ljF" id="h4O-C9-7NM"/>
                         <outlet property="numberOfPaymentsTF" destination="aOa-Fz-tFz" id="HZE-1h-9Jg"/>
                         <outlet property="resultTF" destination="GAi-vc-1fR" id="xil-8n-PEF"/>
+                        <outlet property="scrollView" destination="VBe-KA-Oba" id="rr7-g3-AJ8"/>
                         <outletCollection property="textFields" destination="ReS-Mr-amZ" collectionClass="NSMutableArray" id="Com-Fg-UVM"/>
                         <outletCollection property="textFields" destination="Yjo-hB-oQq" collectionClass="NSMutableArray" id="n4P-3M-vfg"/>
                         <outletCollection property="textFields" destination="i0N-tF-v8U" collectionClass="NSMutableArray" id="8MT-S2-oq5"/>
                         <outletCollection property="textFields" destination="aOa-Fz-tFz" collectionClass="NSMutableArray" id="O7A-mx-uIF"/>
+                        <outletCollection property="containers" destination="kLJ-7W-XFI" collectionClass="NSMutableArray" id="Aat-0c-VBG"/>
+                        <outletCollection property="containers" destination="IJp-Uc-2yv" collectionClass="NSMutableArray" id="T3d-ia-9lT"/>
+                        <outletCollection property="containers" destination="UWM-t0-bst" collectionClass="NSMutableArray" id="N6k-J7-1oY"/>
+                        <outletCollection property="containers" destination="dWO-BI-ljF" collectionClass="NSMutableArray" id="Okx-4n-oym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eg2-fU-xWF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
