@@ -142,19 +142,13 @@ class SavingsViewController: UIViewController {
     func calculateMissingField(){
         switch missingField {
             case TextFieldID.futureValue.rawValue:
-                let futureValue = savingsViewModel.calculateFutureValue(withMonthlyPayments: hasMonthlyPayments)
-                savingsViewModel.state.futureValue = futureValue
-                answerTF.text = futureValue.roundTo(decimalPlaces: 2).description
+                answerTF.text = savingsViewModel.calculateFutureValue(withMonthlyPayments: hasMonthlyPayments)
                 break
             case TextFieldID.interest.rawValue:
-                let interest = savingsViewModel.calculateInterest(withMonthlyPayments: hasMonthlyPayments)
-                savingsViewModel.state.interest = interest.roundTo(decimalPlaces: 2)
-                answerTF.text = "\(interest.roundTo(decimalPlaces: 2) * 100)%"
+                answerTF.text = savingsViewModel.calculateInterest(withMonthlyPayments: hasMonthlyPayments)
                 break
             case TextFieldID.principalAmount.rawValue:
-                let principalAmount = savingsViewModel.state.getPrincipalAmount()
-                savingsViewModel.state.principalAmount = principalAmount
-                answerTF.text = principalAmount.roundTo(decimalPlaces: 2).description
+                answerTF.text = savingsViewModel.calculatePrincipalAmount()
                 break
             default:
                 break

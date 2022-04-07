@@ -12,4 +12,12 @@ class StatefulViewModel<T> {
     init(state: T){
         self.state = state
     }
+    
+    func isInvalidValue(_ value: Double) -> Bool {
+        return value.isNaN || value.isInfinite
+    }
+    
+    func isInvalidValue(_ value: Decimal) -> Bool {
+        return value.isNaN || value.isInfinite
+    }
 }
