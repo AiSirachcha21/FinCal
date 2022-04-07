@@ -49,19 +49,10 @@ class SavingsViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.hideKeyboardWhenSwipeDown()
-        
-        // Text color for Segemented Control
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        
-        navigationController?.navigationBar.backgroundColor = UIColor.white
+        self.setupStatusBar()
         
         title = "Savings"
-
-        // TODO: Action needs to be implemented here for the "Help View"
-        let questionImage = UIImage(systemName: "questionmark.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .default))
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: questionImage, style: .plain, target: self, action: nil)
-        
+        self.addHelpPageNavigationButton(action: nil)
         
         // To push view up when keyboard shows/hides
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -74,7 +65,6 @@ class SavingsViewController: UIViewController {
             self?.exposeRequiredFields(missingFieldTag: change.newValue!)
         }
         
-        answerTF.isEnabled = false
         pickSolvingFieldBtn.subtitleLabel?.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
         exposeRequiredFields(missingFieldTag: missingField)
     }
@@ -140,18 +130,23 @@ class SavingsViewController: UIViewController {
     }
     
     func calculateMissingField(){
+        let defaultErrorMessage = "Cannot be calculated"
+        var resultText: String?
+        
         switch missingField {
             case TextFieldID.futureValue.rawValue:
-                answerTF.text = savingsViewModel.calculateFutureValue(withMonthlyPayments: hasMonthlyPayments)
+                resultText = savingsViewModel.calculateFutureValue(withMonthlyPayments: hasMonthlyPayments)
                 break
             case TextFieldID.interest.rawValue:
-                answerTF.text = savingsViewModel.calculateInterest(withMonthlyPayments: hasMonthlyPayments)
+                resultText = savingsViewModel.calculateInterest(withMonthlyPayments: hasMonthlyPayments)
                 break
             case TextFieldID.principalAmount.rawValue:
-                answerTF.text = savingsViewModel.calculatePrincipalAmount()
+                resultText = savingsViewModel.calculatePrincipalAmount()
                 break
             default:
                 break
         }
+        
+        answerTF.text = resultText ?? defaultErrorMessage
     }
 }

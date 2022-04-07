@@ -21,6 +21,16 @@ extension UIViewController {
         swipe.direction = .down
         view.addGestureRecognizer(swipe)
     }
+    
+    func setupStatusBar() {
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+    }
+    
+    func addHelpPageNavigationButton(action: Selector?) {
+        let questionImage = UIImage(systemName: "questionmark.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .default))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: questionImage, style: .plain, target: self, action: action)
+    }
 
     @objc func dismissKeyboard() {
         view.endEditing(true)

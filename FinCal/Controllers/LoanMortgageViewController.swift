@@ -40,18 +40,10 @@ class LoanMortgageViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.hideKeyboardWhenSwipeDown()
-        
-        // Text color for Segemented Control
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        
-        navigationController?.navigationBar.backgroundColor = UIColor.white
+        self.setupStatusBar()
 
         title = "Loan and Mortgages"
-        
-        let questionImage = UIImage(systemName: "questionmark.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .default))
-
-        // TODO: Action needs to be implemented here for the "Help View"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: questionImage, style: .plain, target: self, action: nil)
+        self.addHelpPageNavigationButton(action: nil)
         
         // To push view up when keyboard shows/hides
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -63,7 +55,6 @@ class LoanMortgageViewController: UIViewController {
             self?.exposeRequiredFields(missingFieldTag: change.newValue!)
         }
         
-        resultTF.isEnabled = false
         changeFieldButton.subtitleLabel?.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
         exposeRequiredFields(missingFieldTag: missingField)
     }
