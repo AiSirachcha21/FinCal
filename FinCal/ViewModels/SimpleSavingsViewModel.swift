@@ -32,7 +32,7 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
                 break
                 
             case TextFieldID.duration.rawValue:
-                state.duration = Int(field.text!) ?? 0
+                state.duration = Double(field.text!) ?? 0
                 break
                 
             case TextFieldID.monthlyPayments.rawValue:

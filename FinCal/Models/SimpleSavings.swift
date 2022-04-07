@@ -13,7 +13,7 @@ class SimpleSavings: CustomStringConvertible, Payable {
 
     var futureValue: Double = 0.0
     var principalAmount: Double = 0.0
-    var duration: Int = 1
+    var duration: Double = 1.0
     var interest: Double = 0.0
     var compoundsPerYear: Int = 12
     var monthlyPayment: Double = 0.0
@@ -33,18 +33,18 @@ class SimpleSavings: CustomStringConvertible, Payable {
             return getFutureValue()
         }
         
-        let numerator = pow(1 + Double(interest / Double(compoundsPerYear)), Double(compoundsPerYear * duration)) - 1
+        let numerator = pow(1 + Double(interest / Double(compoundsPerYear)), Double(compoundsPerYear) * duration) - 1
         let denominator = interest / Double(compoundsPerYear)
         let futureVal = monthlyPayment * (numerator/denominator)
         
-        let compoundInterest = principalAmount * pow(1 + interest/Double(compoundsPerYear), Double(compoundsPerYear * duration))
+        let compoundInterest = principalAmount * pow(1 + interest/Double(compoundsPerYear), Double(compoundsPerYear) * duration)
         
         return futureVal + compoundInterest
     }
     
     func getRate() -> Double {
         let innerDenominator = futureValue / principalAmount
-        let inner = pow(innerDenominator, 1 / Double(compoundsPerYear * duration)) - 1.0
+        let inner = pow(innerDenominator, 1 / Double(compoundsPerYear) * duration) - 1.0
         let newInterest = Double(compoundsPerYear) * inner
 
         return newInterest
@@ -56,7 +56,7 @@ class SimpleSavings: CustomStringConvertible, Payable {
         }
         
         let innerDenominator = futureValue / principalAmount
-        let inner = pow(innerDenominator, 1 / Double(compoundsPerYear * duration)) - 1.0
+        let inner = pow(innerDenominator, 1 / Double(compoundsPerYear) * duration) - 1.0
         let newInterest = Double(compoundsPerYear) * inner
         
         return newInterest
