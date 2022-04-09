@@ -41,6 +41,24 @@ class StatefulViewModel<T> {
     }
     
     func getFieldStringRepr(fieldTag: TextFieldID, value: Int) -> String {
+        switch fieldTag {
+            case .duration:
+                return "\(abs(value)) months"
+                
+            default:
+                break
+        }
+        
         return value.description
+    }
+    
+    func getFieldStringRepr(fieldTag: TextFieldID, value: (year: Int, month: Int)) -> String {
+        switch fieldTag {
+            case .duration:
+                return "\(value.year) years, \(value.month) months"
+                
+            default:
+                return "Try using another string representaiton method to get this."
+        }
     }
 }

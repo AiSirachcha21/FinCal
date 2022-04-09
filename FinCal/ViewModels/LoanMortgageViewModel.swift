@@ -32,7 +32,7 @@ class LoanMortgageViewModel : StatefulViewModel<Loan> {
         let monthDecimal = years.truncatingRemainder(dividingBy: 1)
         let months = Int((monthDecimal * 12).rounded(.up))
         
-        return "\(formattedYears) years, \(months) months"
+        return getFieldStringRepr(fieldTag: .duration, value: (formattedYears, months))
     }
     
     /// Returns Monthly Payment Rounded to 2 Decimal Places as a String
@@ -44,7 +44,7 @@ class LoanMortgageViewModel : StatefulViewModel<Loan> {
         }
         
         state.monthlyPayment = monthlyPayment
-        return "£\(monthlyPayment.roundTo(decimalPlaces: 2))"
+        return getFieldStringRepr(fieldTag: .monthlyPayments, value: monthlyPayment)
     }
     
     func updateModelStateUsing(_ field: UITextField) {
