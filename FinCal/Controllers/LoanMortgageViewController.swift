@@ -26,6 +26,7 @@ class LoanMortgageViewController: UIViewController {
     
     @IBOutlet var changeFieldButton: UIButton!
     
+    @IBOutlet var missingFieldLabel: UILabel!
     @objc dynamic var missingField = TextFieldID.duration.rawValue
     private var missingFieldObserver: NSKeyValueObservation?
     
@@ -57,7 +58,7 @@ class LoanMortgageViewController: UIViewController {
             self?.exposeRequiredFields(missingFieldTag: change.newValue!)
         }
         
-        changeFieldButton.subtitleLabel?.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
+        missingFieldLabel.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
         exposeRequiredFields(missingFieldTag: missingField)
         
         self.recoverFieldsFromMemory()
@@ -83,7 +84,8 @@ class LoanMortgageViewController: UIViewController {
            let missingTF = textFields.first(where: { $0.tag == missingFieldTag }),
            let missingTFLabel = (missingTFContainer.arrangedSubviews.first as? UILabel)?.text {
             missingTFContainer.isHidden = true
-            changeFieldButton.subtitleLabel?.text = missingTFLabel
+            
+            missingFieldLabel.text = missingTFLabel
             resultTF.text = missingTF.text
             resultTF.placeholder = missingTF.placeholder
             

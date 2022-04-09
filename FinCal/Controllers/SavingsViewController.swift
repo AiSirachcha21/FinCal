@@ -32,8 +32,10 @@ class SavingsViewController: UIViewController {
 
     @IBOutlet var textFields: [UITextField]!
 
+    @IBOutlet var missingFieldLabel: UILabel!
     @objc dynamic var missingField = TextFieldID.futureValue.rawValue
     private var missingFieldObserver: NSKeyValueObservation?
+    
     
     private var hasMonthlyPayments = false
 
@@ -66,7 +68,7 @@ class SavingsViewController: UIViewController {
             self?.exposeRequiredFields(missingFieldTag: change.newValue!)
         }
         
-        pickSolvingFieldBtn.subtitleLabel?.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
+        missingFieldLabel.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
         exposeRequiredFields(missingFieldTag: missingField)
         
         self.recoverFieldsFromMemory()
@@ -99,7 +101,8 @@ class SavingsViewController: UIViewController {
            let missingTF = textFields.first(where: { $0.tag == missingFieldTag }),
            let missingTFLabel = (missingTFContainer.arrangedSubviews.first as? UILabel)?.text {
             missingTFContainer.isHidden = true
-            pickSolvingFieldBtn.subtitleLabel?.text = missingTFLabel
+            
+            missingFieldLabel.text = missingTFLabel
             answerTF.text = missingTF.text
             answerTF.placeholder = missingTF.placeholder
             
@@ -114,21 +117,24 @@ class SavingsViewController: UIViewController {
 
     /// Opens a sheet that allows the user to pick the field they want to solve for
     @objc func openFieldToSolveSelectionSheet() {
-        fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
-        fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
-        fieldSelectorVC.onCloseAction = { [weak self] selectedValue in
-            self?.savingsViewScrollView.isUserInteractionEnabled = true
+        
+        func handleClose(selectedValue:TextFieldID?) {
+            self.savingsViewScrollView.isUserInteractionEnabled = true
             
             if let newMissingFieldTag = selectedValue?.rawValue {
-                self?.missingField = newMissingFieldTag
+                self.missingField = newMissingFieldTag
             } else {
                 /* Do this to make sure that the button doesn't use the default text when you click cancel
-                  * after attempting to pick field on first time */
-                self?.pickSolvingFieldBtn.subtitleLabel?.text = self?.selectableFields.first(
-                    where: {$0.id.rawValue == self?.missingField }
+                 * after attempting to pick field on first time */
+                self.pickSolvingFieldBtn.subtitleLabel?.text = self.selectableFields.first(
+                    where: {$0.id.rawValue == self.missingField }
                 )?.name
             }
         }
+        
+        fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
+        fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
+        fieldSelectorVC.onCloseAction = handleClose
 
         if let sheet = fieldSelectorVC.sheetPresentationController {
             sheet.detents = [.medium()]
@@ -136,10 +142,13 @@ class SavingsViewController: UIViewController {
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersEdgeAttachedInCompactHeight = true
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+            sheet.prefersGrabberVisible = true
         }
 
         savingsViewScrollView.isUserInteractionEnabled = false
-        present(fieldSelectorVC, animated: true, completion: nil)
+        present(fieldSelectorVC, animated: true){
+            handleClose(selectedValue: TextFieldID(rawValue: self.missingField))
+        }
     }
 
     @IBAction func onEdit(_ sender: UITextField) {

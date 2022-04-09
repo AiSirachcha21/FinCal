@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DT6-uo-o6n">
-                                        <rect key="frame" x="10" y="0.0" width="394" height="613.66666666666663"/>
+                                        <rect key="frame" x="10" y="0.0" width="394" height="598.33333333333337"/>
                                         <subviews>
                                             <segmentedControl contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="s1E-4H-MJR">
                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
@@ -34,7 +34,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eFZ-CT-Ts1">
-                                                <rect key="frame" x="0.0" y="51" width="394" height="141"/>
+                                                <rect key="frame" x="0.0" y="51.000000000000007" width="394" height="125.66666666666669"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YDy-is-yeZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="40.666666666666664"/>
@@ -63,18 +63,17 @@
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8M-5Y-oWL">
-                                                        <rect key="frame" x="0.0" y="94.666666666666657" width="394" height="46.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="94.666666666666657" width="394" height="31"/>
                                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.25" height="1"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Change Field" subtitle="Updating..." titleAlignment="center">
+                                                        <buttonConfiguration key="configuration" style="tinted" title="Change Field" titleAlignment="center">
                                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                            <fontDescription key="subtitleFontDescription" type="system" weight="light" pointSize="12"/>
                                                         </buttonConfiguration>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Jg-ET-WLO">
-                                                <rect key="frame" x="0.0" y="212.00000000000003" width="394" height="401.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="196.66666666666666" width="394" height="401.66666666666674"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="H8q-Md-jO5">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="64.333333333333329"/>
@@ -96,7 +95,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5m4-en-Q8z">
-                                                        <rect key="frame" x="0.0" y="84.333333333333314" width="394" height="64.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="84.333333333333343" width="394" height="64.333333333333343"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Interest %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSf-oP-vFK">
                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="20.333333333333332"/>
@@ -105,7 +104,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest %" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1w2-di-kbM">
-                                                                <rect key="frame" x="0.0" y="30.333333333333371" width="394" height="34"/>
+                                                                <rect key="frame" x="0.0" y="30.333333333333314" width="394" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -115,7 +114,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VpI-Rl-02t">
-                                                        <rect key="frame" x="0.0" y="168.66666666666669" width="394" height="64.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="168.66666666666666" width="394" height="64.333333333333343"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Monthly Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlz-0A-vcZ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="20.333333333333332"/>
@@ -124,7 +123,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Monthly Payment" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="R2q-tE-xFC">
-                                                                <rect key="frame" x="0.0" y="30.333333333333314" width="394" height="34"/>
+                                                                <rect key="frame" x="0.0" y="30.333333333333371" width="394" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -162,7 +161,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of Payments" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0ys-fx-dZu">
-                                                                <rect key="frame" x="0.0" y="30.333333333333258" width="394" height="34"/>
+                                                                <rect key="frame" x="0.0" y="30.333333333333371" width="394" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -205,6 +204,7 @@
                         <outlet property="futureValueTF" destination="7El-sR-ZGr" id="hsT-FL-XJ4"/>
                         <outlet property="interestContainer" destination="5m4-en-Q8z" id="gDa-Rq-Swq"/>
                         <outlet property="interestTF" destination="1w2-di-kbM" id="tWt-UA-KGV"/>
+                        <outlet property="missingFieldLabel" destination="lgk-fI-QVz" id="lrZ-5n-DN2"/>
                         <outlet property="monthlyPaymentContainer" destination="VpI-Rl-02t" id="U4g-0C-HuT"/>
                         <outlet property="monthlyPaymentTF" destination="R2q-tE-xFC" id="G1T-RJ-1Fm"/>
                         <outlet property="numberOfPaymentsContainer" destination="iI7-W1-QYs" id="lp4-8y-61Q"/>
@@ -241,10 +241,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="l3s-bY-lpQ">
-                                        <rect key="frame" x="10" y="0.0" width="394" height="478.33333333333331"/>
+                                        <rect key="frame" x="10" y="0.0" width="394" height="463"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fET-Ve-J9f">
-                                                <rect key="frame" x="0.0" y="0.0" width="394" height="141"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="125.66666666666667"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="weH-9C-Uuw">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="40.666666666666664"/>
@@ -270,18 +270,17 @@
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4j-dG-Mow">
-                                                        <rect key="frame" x="0.0" y="94.666666666666671" width="394" height="46.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="94.666666666666671" width="394" height="31"/>
                                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.25" height="1"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Change Field" subtitle="Updating..." titleAlignment="center">
+                                                        <buttonConfiguration key="configuration" style="tinted" title="Change Field" titleAlignment="center">
                                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                            <fontDescription key="subtitleFontDescription" type="system" weight="light" pointSize="12"/>
                                                         </buttonConfiguration>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0sN-KU-gu1">
-                                                <rect key="frame" x="0.0" y="160.99999999999997" width="394" height="317.33333333333326"/>
+                                                <rect key="frame" x="0.0" y="145.66666666666666" width="394" height="317.33333333333337"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kLJ-7W-XFI">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="64.333333333333329"/>
@@ -312,7 +311,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest %" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yjo-hB-oQq">
-                                                                <rect key="frame" x="0.0" y="30.333333333333343" width="394" height="34"/>
+                                                                <rect key="frame" x="0.0" y="30.333333333333314" width="394" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -322,7 +321,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-t0-bst">
-                                                        <rect key="frame" x="0.0" y="168.66666666666669" width="394" height="64.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="168.66666666666666" width="394" height="64.333333333333343"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Monthly Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2X-3D-gvc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="20.333333333333332"/>
@@ -331,7 +330,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Monthly Payment" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i0N-tF-v8U">
-                                                                <rect key="frame" x="0.0" y="30.333333333333314" width="394" height="34"/>
+                                                                <rect key="frame" x="0.0" y="30.333333333333371" width="394" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -392,6 +391,7 @@
                         <outlet property="interestTF" destination="Yjo-hB-oQq" id="18r-BG-oXD"/>
                         <outlet property="loanAmountTF" destination="ReS-Mr-amZ" id="IJR-fb-47J"/>
                         <outlet property="loanContainer" destination="kLJ-7W-XFI" id="FiH-U4-i5A"/>
+                        <outlet property="missingFieldLabel" destination="D2C-hR-d3Z" id="s7J-wI-bJ9"/>
                         <outlet property="monthlyPayment" destination="UWM-t0-bst" id="R8G-Xf-Zuv"/>
                         <outlet property="monthlyPaymentTF" destination="i0N-tF-v8U" id="RGt-bS-QCR"/>
                         <outlet property="numberOfPaymentsContainer" destination="dWO-BI-ljF" id="h4O-C9-7NM"/>
