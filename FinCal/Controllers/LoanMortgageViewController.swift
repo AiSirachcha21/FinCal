@@ -45,6 +45,8 @@ class LoanMortgageViewController: UIViewController {
         title = "Loan and Mortgages"
         self.addHelpPageNavigationButton(action: nil)
         
+        fieldSelectorVC.selectedValue = .duration
+        
         // To push view up when keyboard shows/hides
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardHides), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -93,7 +95,6 @@ class LoanMortgageViewController: UIViewController {
     
     @objc func openFieldToSolveSelectionSheet() {
         fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
-        fieldSelectorVC.previousValue = fieldSelectorVC.selectedValue
         fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
         fieldSelectorVC.onCloseAction = { [weak self] selectedValue in
             self?.scrollView.isUserInteractionEnabled = true

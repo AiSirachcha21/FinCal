@@ -46,8 +46,6 @@ class SavingsViewController: UIViewController {
     ]
     
     private lazy var userDefaults = UserDefaults.standard
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,7 +115,6 @@ class SavingsViewController: UIViewController {
     /// Opens a sheet that allows the user to pick the field they want to solve for
     @objc func openFieldToSolveSelectionSheet() {
         fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
-        fieldSelectorVC.previousValue = fieldSelectorVC.selectedValue
         fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
         fieldSelectorVC.onCloseAction = { [weak self] selectedValue in
             self?.savingsViewScrollView.isUserInteractionEnabled = true

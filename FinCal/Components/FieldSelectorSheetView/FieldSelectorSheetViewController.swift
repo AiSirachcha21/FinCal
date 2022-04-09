@@ -12,16 +12,12 @@ class FieldSelectorSheetViewControlller : UIViewController, UIPickerViewDelegate
     
     var selectedValue: TextFieldID?
     
-    /// Previous value of picker to maintain state on cancel
-    var previousValue: TextFieldID?
-    
     /// Action to be completed after submitting selection
     var onCloseAction: ((_ selectedValue: TextFieldID?)->())?
     var fields: [TextFieldIdentity]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         lazy var confirmBtn: UIButton = {
             let view = UIButton()
             view.configuration = .filled()
@@ -31,18 +27,8 @@ class FieldSelectorSheetViewControlller : UIViewController, UIPickerViewDelegate
             return view
         }()
         
-        lazy var cancelBtn: UIButton = {
-            let view = UIButton()
-            view.configuration = .tinted()
-            view.tintColor = UIColor.systemRed
-            view.setTitle("Cancel", for: .normal)
-            view.addTarget(self, action: #selector(onCancel), for: .touchDown)
-            
-            return view
-        }()
-        
         lazy var btnPanel: UIStackView = {
-            let view = UIStackView(arrangedSubviews: [cancelBtn, confirmBtn])
+            let view = UIStackView(arrangedSubviews: [confirmBtn])
             view.axis = .horizontal
             view.spacing = 4.0
             
@@ -53,7 +39,8 @@ class FieldSelectorSheetViewControlller : UIViewController, UIPickerViewDelegate
             let view = UIPickerView()
             view.dataSource = self
             view.delegate = self
-            view.selectRow(fields?.firstIndex(where: {$0.id == selectedValue})! ?? 0, inComponent: 0, animated: true)
+            
+            view.selectRow(fields?.firstIndex(where: {$0.id == selectedValue}) ?? 0, inComponent: 0, animated: true)
             
             return view
         }()
@@ -80,11 +67,6 @@ class FieldSelectorSheetViewControlller : UIViewController, UIPickerViewDelegate
     
     @objc func onConfirm() {
         onCloseAction?(selectedValue)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func onCancel(){
-        onCloseAction?(previousValue)
         self.dismiss(animated: true, completion: nil)
     }
     
