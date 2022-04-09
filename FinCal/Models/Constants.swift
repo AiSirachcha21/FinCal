@@ -21,3 +21,8 @@ enum ScreenNames {
     case duration = 5
     case monthlyPayments = 6
 }
+
+enum UserDefaultKeys {
+    static let savings = "Savings"
+    static let loans = "Loan"
+}
