@@ -20,4 +20,27 @@ class StatefulViewModel<T> {
     func isInvalidValue(_ value: Decimal) -> Bool {
         return value.isNaN || value.isInfinite
     }
+    
+    func getFieldStringRepr(fieldTag: TextFieldID, value: Double) -> String {
+        var string = "0.0"
+        switch fieldTag {
+            case .futureValue, .principalAmount, .monthlyPayments:
+                string = "£\(value.roundTo(decimalPlaces: 2))"
+                break
+                
+            case .interest:
+                string = "\(value.roundTo(decimalPlaces: 2) * 100)%"
+                break
+                
+            default:
+                string = "£0.0"
+                break
+        }
+        
+        return string
+    }
+    
+    func getFieldStringRepr(fieldTag: TextFieldID, value: Int) -> String {
+        return value.description
+    }
 }

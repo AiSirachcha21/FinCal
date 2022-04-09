@@ -17,8 +17,7 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
         
         state.futureValue = futureValue
         
-        let formattedFutureValue = "£\(futureValue.roundTo(decimalPlaces: 2))"
-        return formattedFutureValue
+        return getFieldStringRepr(fieldTag: .futureValue, value: futureValue)
     }
     
     func calculateInterest(withMonthlyPayments hasMonthlyPayments: Bool) -> String? {
@@ -30,8 +29,7 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
         
         state.interest = interest
         
-        let formattedInterest = "\(interest.roundTo(decimalPlaces: 2) * 100)%"
-        return formattedInterest
+        return getFieldStringRepr(fieldTag: .interest, value: interest)
     }
     
     func calculatePrincipalAmount() -> String? {
@@ -43,9 +41,9 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
         
         state.principalAmount = principalAmount
         
-        let formattedPrincipalAmount = "£\(principalAmount.roundTo(decimalPlaces: 2))"
-        return formattedPrincipalAmount
+        return getFieldStringRepr(fieldTag: .principalAmount, value: principalAmount)
     }
+    
     
     func updateModelStateUsing(_ field: UITextField) {
         switch field.tag {
