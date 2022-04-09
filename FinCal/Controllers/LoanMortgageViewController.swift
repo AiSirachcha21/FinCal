@@ -35,11 +35,11 @@ class LoanMortgageViewController: UIViewController {
         TextFieldIdentity(name: "Duration", id: TextFieldID.duration),
         TextFieldIdentity(name: "Monthly Payments", id: TextFieldID.monthlyPayments)
     ]
+    private lazy var userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        self.hideKeyboardWhenSwipeDown()
         self.setupStatusBar()
 
         title = "Loan and Mortgages"
@@ -57,6 +57,23 @@ class LoanMortgageViewController: UIViewController {
         
         changeFieldButton.subtitleLabel?.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
         exposeRequiredFields(missingFieldTag: missingField)
+        
+        self.recoverFieldsFromMemory()
+    }
+    
+    /// Recover fields from memory when the application re-launches from inactive, background  or suspended state.
+    func recoverFieldsFromMemory(){
+        if let loanData = UserDefaults.standard.data(forKey: UserDefaultKeys.loans),
+           let loan = try? JSONDecoder().decode(Loan.self, from: loanData) {
+            loanViewModel.state = loan
+            
+            loanAmountTF.text = loan.principalAmount.roundTo(decimalPlaces: 2).description
+            interestTF.text = Int(loan.interest * 100).description
+            monthlyPaymentTF.text = loan.monthlyPayment.roundTo(decimalPlaces: 2).description
+            numberOfPaymentsTF.text = loan.duration.description
+            
+            missingField = TextFieldID.futureValue.rawValue
+        }
     }
     
     func exposeRequiredFields(missingFieldTag: Int) {
@@ -125,5 +142,11 @@ class LoanMortgageViewController: UIViewController {
         }
         
         resultTF.text = resultText ?? defaultErrorMessage
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let encodedState = try? JSONEncoder().encode(loanViewModel.state) {
+            userDefaults.set(encodedState, forKey: UserDefaultKeys.loans)
+        }
     }
 }

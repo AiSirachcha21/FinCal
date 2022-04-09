@@ -44,11 +44,14 @@ class SavingsViewController: UIViewController {
         TextFieldIdentity(name:"Future Value", id:TextFieldID.futureValue),
         TextFieldIdentity(name:"Interest", id:TextFieldID.interest)
     ]
+    
+    private lazy var userDefaults = UserDefaults.standard
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        self.hideKeyboardWhenSwipeDown()
         self.setupStatusBar()
         
         title = "Savings"
@@ -67,6 +70,24 @@ class SavingsViewController: UIViewController {
         
         pickSolvingFieldBtn.subtitleLabel?.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
         exposeRequiredFields(missingFieldTag: missingField)
+        
+        self.recoverFieldsFromMemory()
+    }
+    
+    /// Recover fields from memory when the application re-launches from inactive, background  or suspended state.
+    func recoverFieldsFromMemory(){
+        if let savingsData = UserDefaults.standard.data(forKey: UserDefaultKeys.savings),
+           let savings = try? JSONDecoder().decode(SimpleSavings.self, from: savingsData) {
+            savingsViewModel.state = savings
+            
+            principalAmountTF.text = savings.principalAmount.roundTo(decimalPlaces: 2).description
+            interestTF.text = Int(savings.interest * 100).description
+            futureValueTF.text = savings.futureValue.roundTo(decimalPlaces: 2).description
+            monthlyPaymentTF.text = savings.monthlyPayment.roundTo(decimalPlaces: 2).description
+            numberOfPaymentsTF.text = Int(savings.duration).description
+            
+            missingField = TextFieldID.futureValue.rawValue
+        }
     }
     
     @IBAction func changeSavingsType() {
@@ -141,10 +162,16 @@ class SavingsViewController: UIViewController {
                 resultText = savingsViewModel.calculateInterest(withMonthlyPayments: hasMonthlyPayments)
                 break
             case TextFieldID.principalAmount.rawValue:
-                resultText = savingsViewModel.calculatePrincipalAmount()
+                resultText = savingsViewModel.calculatePrincipalAmount(withMonthlyPayments: hasMonthlyPayments)
                 break
             default:
                 break
+        }
+        
+        if resultText != nil {
+            if let encodedState = try? JSONEncoder().encode(savingsViewModel.state) {
+                userDefaults.set(encodedState, forKey: UserDefaultKeys.savings)
+            }
         }
         
         answerTF.text = resultText ?? defaultErrorMessage
