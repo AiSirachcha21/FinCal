@@ -32,8 +32,8 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
         return getFieldStringRepr(fieldTag: .interest, value: interest)
     }
     
-    func calculatePrincipalAmount() -> String? {
-        let principalAmount = state.getPrincipalAmount()
+    func calculatePrincipalAmount(withMonthlyPayments hasMonthlyPayments: Bool) -> String? {
+        let principalAmount = state.getPrincipalAmount(withMonthlyPayments: hasMonthlyPayments)
         
         if isInvalidValue(principalAmount) {
             return nil

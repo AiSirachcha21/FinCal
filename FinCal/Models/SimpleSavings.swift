@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SimpleSavings: CustomStringConvertible, Payable {
+class SimpleSavings: Codable, CustomStringConvertible, Payable {
     init() {
     }
 
@@ -67,5 +67,22 @@ class SimpleSavings: CustomStringConvertible, Payable {
         let newPrincipalAmount = futureValue/denominator
         
         return newPrincipalAmount
+    }
+    
+    
+    //TODO: Refactor the code below.
+    func getPrincipalAmount(withMonthlyPayments:Bool) -> Double {
+        if !withMonthlyPayments {
+            return getPrincipalAmount()
+        }
+        
+        let interestedCompoundPerYear = interest / Double(compoundsPerYear)
+        let totalCompounds = Double(compoundsPerYear) * duration
+        let numerator = monthlyPayment * (pow((1 + interestedCompoundPerYear), totalCompounds) - 1)
+        let x = (numerator / interestedCompoundPerYear)
+        
+        let principalAmount = (futureValue - x ) / pow((1 + interestedCompoundPerYear), totalCompounds)
+        
+        return principalAmount
     }
 }

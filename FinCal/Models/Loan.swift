@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Loan : CustomStringConvertible, Payable {
+class Loan : Codable, CustomStringConvertible, Payable {
     var principalAmount: Double = 0.0
     var interest: Double = 0.0
     var monthlyPayment: Double = 0.0
