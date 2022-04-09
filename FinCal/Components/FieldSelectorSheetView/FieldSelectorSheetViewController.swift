@@ -49,8 +49,6 @@ class FieldSelectorSheetViewControlller : UIViewController, UIPickerViewDelegate
             let view = UIStackView(arrangedSubviews: [pickerView, btnPanel])
             view.axis = .vertical
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.layer.borderColor = UIColor.blue.cgColor
-            view.layer.borderWidth = 1.0
             
             return view
         }()
