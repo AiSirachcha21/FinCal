@@ -8,7 +8,7 @@
 import UIKit
 
 /// Reusable Picker component for selecting field needed to be found
-class FieldSelectorSheetViewControlller : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class FieldSelectorSheetViewController : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var selectedValue: TextFieldID?
     

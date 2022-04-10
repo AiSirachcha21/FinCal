@@ -39,7 +39,7 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
     private var missingFieldObserver: NSKeyValueObservation?
     
     private var hasMonthlyPayments = false
-    private var fieldSelectorVC: FieldSelectorSheetViewControlller?
+    private var fieldSelectorVC: FieldSelectorSheetViewController?
 
     private lazy var savingsViewModel = SimpleSavingsViewModel(state: SimpleSavings())
     private lazy var selectableFields = [
@@ -150,7 +150,7 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
             }
         }
         
-        fieldSelectorVC = FieldSelectorSheetViewControlller()
+        fieldSelectorVC = FieldSelectorSheetViewController()
         fieldSelectorVC!.fields = [TextFieldIdentity](hasMonthlyPayments ? selectableFieldsForMonthlyContributions : selectableFields)
         fieldSelectorVC!.selectedValue = TextFieldID(rawValue: missingField)!
         fieldSelectorVC!.onCloseAction = handleClose

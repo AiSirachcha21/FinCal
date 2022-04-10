@@ -31,7 +31,7 @@ class LoanMortgageViewController: UIViewController {
     @IBOutlet var missingFieldLabel: UILabel!
     @objc dynamic var missingField = TextFieldID.duration.rawValue
     private var missingFieldObserver: NSKeyValueObservation?
-    private var fieldSelectorVC: FieldSelectorSheetViewControlller?
+    private var fieldSelectorVC: FieldSelectorSheetViewController?
     
     private lazy var loanViewModel = LoanMortgageViewModel(state: Loan())
     private lazy var selectableFields:[TextFieldIdentity] = [
@@ -109,7 +109,7 @@ class LoanMortgageViewController: UIViewController {
             }
         }
         
-        fieldSelectorVC = FieldSelectorSheetViewControlller()
+        fieldSelectorVC = FieldSelectorSheetViewController()
         fieldSelectorVC!.fields = [TextFieldIdentity](selectableFields)
         fieldSelectorVC!.selectedValue = TextFieldID(rawValue: missingField)!
         fieldSelectorVC!.onCloseAction = handleClose
