@@ -7,11 +7,11 @@
 
 import Foundation
 
-class TextFieldIdentity : NSObject {
-    var name:String
+class TextFieldIdentity: NSObject {
+    var name: String
     var id: TextFieldID
-    
-    init(name:String, id: TextFieldID) {
+
+    init(name: String, id: TextFieldID) {
         self.name = name
         self.id = id
     }

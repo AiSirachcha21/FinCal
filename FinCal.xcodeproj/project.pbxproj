@@ -14,7 +14,6 @@
 		0670D6C227F9B6C1003594DF /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670D6C127F9B6C1003594DF /* Loan.swift */; };
 		068379FF27D9FD210012D45A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */; };
 		06837A0227DA2D820012D45A /* Payable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06837A0127DA2D820012D45A /* Payable.swift */; };
-		068CC57D27F1804300C6D9B7 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068CC57C27F1804300C6D9B7 /* UserDefaults+Extensions.swift */; };
 		069171AD27D78CA70071ECE3 /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069171AC27D78CA70071ECE3 /* SavingsViewController.swift */; };
 		06BA20FD27EC25EC004EAE19 /* SavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BA20FC27EC25EC004EAE19 /* SavingsViewModel.swift */; };
 		06BA20FF27EC3C23004EAE19 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BA20FE27EC3C23004EAE19 /* ValidationResult.swift */; };
@@ -42,7 +41,6 @@
 		068379FE27D9FD210012D45A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		06837A0127DA2D820012D45A /* Payable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payable.swift; sourceTree = "<group>"; };
 		06837A0927DA359C0012D45A /* FormulaTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FormulaTests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		068CC57C27F1804300C6D9B7 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		069171AC27D78CA70071ECE3 /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
 		06BA20FC27EC25EC004EAE19 /* SavingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewModel.swift; sourceTree = "<group>"; };
 		06BA20FE27EC3C23004EAE19 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 				06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */,
 				06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */,
 				06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */,
-				068CC57C27F1804300C6D9B7 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				06E044A027DB412C007CBA8C /* UITextField+Extensions.swift in Sources */,
-				068CC57D27F1804300C6D9B7 /* UserDefaults+Extensions.swift in Sources */,
 				06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */,
 				06FAB73E27FB460E00834910 /* TextFieldIdentity.swift in Sources */,
 				06BA20FD27EC25EC004EAE19 /* SavingsViewModel.swift in Sources */,

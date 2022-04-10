@@ -10,19 +10,18 @@ import UIKit
 
 extension UITextField {
     func addNumericAccessory(addPlusMinus: Bool) {
-        let numberToolbar = UIToolbar(frame: CGRect(x:0, y: 0, width: UIScreen.main.bounds.width, height: 0))
+        let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
         numberToolbar.barStyle = UIBarStyle.default
 
         var accessories: [UIBarButtonItem] = []
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let doneBtn = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(numberPadDone))
-//Fixed layout issue with keyboard toolbar, reduced height on keyboard appearance in scroll view and added +/- toolbar for
         if addPlusMinus {
             let pmBtn = UIBarButtonItem(title: "+/-", style: UIBarButtonItem.Style.plain, target: self, action: #selector(plusMinusPressed))
             accessories.append(pmBtn)
         }
-        accessories.append(contentsOf: [flexibleSpace,doneBtn])
+        accessories.append(contentsOf: [flexibleSpace, doneBtn])
         numberToolbar.sizeToFit()
 
         numberToolbar.items = accessories
@@ -43,7 +42,7 @@ extension UITextField {
         }
         if currentText.hasPrefix("-") {
             let offsetIndex = currentText.index(currentText.startIndex, offsetBy: 1)
-            let substring = currentText[offsetIndex...]  // remove first character
+            let substring = currentText[offsetIndex...] // remove first character
             self.text = String(substring)
         } else {
             self.text = "-" + currentText
