@@ -63,7 +63,7 @@ class SimpleSavings: Codable, CustomStringConvertible, Payable {
     }
     
     func getPrincipalAmount() -> Double {
-        let denominator = pow(1 + interest/compoundsPerYear, compoundsPerYear + duration)
+        let denominator = pow(1 + interest/compoundsPerYear, compoundsPerYear * duration)
         let newPrincipalAmount = futureValue/denominator
         
         return newPrincipalAmount
