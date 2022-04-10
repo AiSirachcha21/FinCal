@@ -27,10 +27,9 @@ class Loan : Codable, CustomStringConvertible, Payable {
     }
     
     func getMortgageDuration() -> Double {
-        let monthlyInterest = interest / 12
-        let numerator = log(1 - monthlyInterest * principalAmount / monthlyPayment)
-        let denominator = log(1 + monthlyInterest)
+        let interestPerMonth = interest / 12
+        let D = monthlyPayment / interestPerMonth
         
-        return numerator / denominator
+        return  (log(D / (D - principalAmount)) / log(1 + interestPerMonth)) / 12
     }
 }
