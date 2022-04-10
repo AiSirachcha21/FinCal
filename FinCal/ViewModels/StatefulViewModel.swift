@@ -7,6 +7,7 @@
 
 import Foundation
 class StatefulViewModel<T> {
+    var durationInYears = true
     var state: T
     
     init(state: T){

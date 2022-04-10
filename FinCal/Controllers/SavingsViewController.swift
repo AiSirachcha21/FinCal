@@ -38,9 +38,7 @@ class SavingsViewController: UIViewController {
     @objc dynamic var missingField = TextFieldID.futureValue.rawValue
     private var missingFieldObserver: NSKeyValueObservation?
     
-    
     private var hasMonthlyPayments = false
-    private var durationInYears = true
 
     private lazy var savingsViewModel = SimpleSavingsViewModel(state: SimpleSavings())
     private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
@@ -93,7 +91,7 @@ class SavingsViewController: UIViewController {
     
     
     @IBAction func onDurationTypeChange(_ sender: UISegmentedControl) {
-        durationInYears = sender.selectedSegmentIndex == 1
+        savingsViewModel.durationInYears = sender.selectedSegmentIndex == 1
     }
     
     @IBAction func changeSavingsType() {
