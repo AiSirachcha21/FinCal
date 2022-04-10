@@ -12,8 +12,12 @@ class Loan: Codable, CustomStringConvertible, Payable {
     var interest: Double = 0.0
     var monthlyPayment: Double = 0.0
     var duration: Double = 1.0
-    private let futureValue: Double = 0.0
+    private var futureValue: Double
 
+    init(){
+        self.futureValue = 0.0
+    }
+    
     public var description: String {
         return "\(Loan.Type.self)(principalAmount: \(self.principalAmount), interest: \(self.interest), monthlyPayment: \(self.monthlyPayment)), duration: \(self.duration))"
     }
