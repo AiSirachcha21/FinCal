@@ -30,6 +30,8 @@ class SavingsViewController: UIViewController {
     @IBOutlet var pickSolvingFieldBtn: UIButton!
     @IBOutlet var savingsViewScrollView: UIScrollView!
 
+    @IBOutlet var durationTypeController: UISegmentedControl!
+    
     @IBOutlet var textFields: [UITextField]!
 
     @IBOutlet var missingFieldLabel: UILabel!
@@ -38,6 +40,7 @@ class SavingsViewController: UIViewController {
     
     
     private var hasMonthlyPayments = false
+    private var durationInYears = true
 
     private lazy var savingsViewModel = SimpleSavingsViewModel(state: SimpleSavings())
     private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
@@ -61,8 +64,6 @@ class SavingsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardHides), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        pickSolvingFieldBtn.addTarget(self, action: #selector(openFieldToSolveSelectionSheet), for: .touchDown)
-
         // Watches for change in the selected missing field
         missingFieldObserver = observe(\.missingField, options: [.new]) { [weak self] obj, change in
             self?.exposeRequiredFields(missingFieldTag: change.newValue!)
@@ -88,6 +89,11 @@ class SavingsViewController: UIViewController {
             
             missingField = TextFieldID.futureValue.rawValue
         }
+    }
+    
+    
+    @IBAction func onDurationTypeChange(_ sender: UISegmentedControl) {
+        durationInYears = sender.selectedSegmentIndex == 1
     }
     
     @IBAction func changeSavingsType() {
@@ -116,8 +122,7 @@ class SavingsViewController: UIViewController {
     }
 
     /// Opens a sheet that allows the user to pick the field they want to solve for
-    @objc func openFieldToSolveSelectionSheet() {
-        
+    @IBAction func openFieldToSolveSelectionSheet() {
         func handleClose(selectedValue:TextFieldID?) {
             self.savingsViewScrollView.isUserInteractionEnabled = true
             

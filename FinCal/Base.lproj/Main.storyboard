@@ -3,6 +3,7 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DT6-uo-o6n">
-                                        <rect key="frame" x="10" y="0.0" width="394" height="598.33333333333337"/>
+                                        <rect key="frame" x="10" y="0.0" width="394" height="609"/>
                                         <subviews>
                                             <segmentedControl contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="s1E-4H-MJR">
                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
@@ -69,11 +70,14 @@
                                                         <buttonConfiguration key="configuration" style="tinted" title="Change Field" titleAlignment="center">
                                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="openFieldToSolveSelectionSheet" destination="i41-1y-qDf" eventType="touchDown" id="17R-FH-utO"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Jg-ET-WLO">
-                                                <rect key="frame" x="0.0" y="196.66666666666666" width="394" height="401.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="196.66666666666666" width="394" height="412.33333333333337"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="H8q-Md-jO5">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="64.333333333333329"/>
@@ -152,16 +156,32 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iI7-W1-QYs">
-                                                        <rect key="frame" x="0.0" y="337.33333333333337" width="394" height="64.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="337.33333333333337" width="394" height="75"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Number of Payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fa7-dF-JPc">
-                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="20.333333333333332"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of Payments" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0ys-fx-dZu">
-                                                                <rect key="frame" x="0.0" y="30.333333333333371" width="394" height="34"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="0a6-s7-crO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="31"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fa7-dF-JPc">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="213" height="31"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rhh-ve-rhk">
+                                                                        <rect key="frame" x="263" y="0.0" width="131" height="32"/>
+                                                                        <segments>
+                                                                            <segment title="Years"/>
+                                                                            <segment title="Months"/>
+                                                                        </segments>
+                                                                        <color key="selectedSegmentTintColor" name="AccentColor"/>
+                                                                        <connections>
+                                                                            <action selector="onDurationTypeChange:" destination="i41-1y-qDf" eventType="valueChanged" id="kv7-Ua-UJG"/>
+                                                                        </connections>
+                                                                    </segmentedControl>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0ys-fx-dZu">
+                                                                <rect key="frame" x="0.0" y="41" width="394" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
@@ -200,6 +220,7 @@
                     <connections>
                         <outlet property="answerTF" destination="VYk-XH-5LC" id="vBp-aM-i4v"/>
                         <outlet property="compoundSavingSwitcher" destination="s1E-4H-MJR" id="2QC-hE-mfc"/>
+                        <outlet property="durationTypeController" destination="rhh-ve-rhk" id="Vvc-dl-5mO"/>
                         <outlet property="futureValueContainer" destination="Ro8-aU-dXY" id="ar3-r0-8ww"/>
                         <outlet property="futureValueTF" destination="7El-sR-ZGr" id="hsT-FL-XJ4"/>
                         <outlet property="interestContainer" destination="5m4-en-Q8z" id="gDa-Rq-Swq"/>
@@ -477,6 +498,9 @@
     <resources>
         <image name="arrow.down.doc" catalog="system" width="115" height="128"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
