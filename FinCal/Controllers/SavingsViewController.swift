@@ -67,6 +67,7 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
         missingFieldObserver = observe(\.missingField, options: [.new]) { [weak self] obj, change in
             self?.exposeRequiredFields(missingFieldTag: change.newValue!)
             self?.durationTypeController.isHidden = change.newValue! != TextFieldID.duration.rawValue
+            self?.missingFieldLabel.text = self?.selectableFields.first(where: { $0.id.rawValue == self?.missingField })?.name
         }
         
         missingFieldLabel.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
@@ -93,7 +94,8 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
     
     
     @IBAction func onDurationTypeChange(_ sender: UISegmentedControl) {
-        savingsViewModel.durationInYears = sender.selectedSegmentIndex == 1
+        savingsViewModel.durationInYears = sender.selectedSegmentIndex == 0
+        calculateMissingField()
     }
     
     @IBAction func changeSavingsType() {
@@ -170,8 +172,8 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
             case TextFieldID.principalAmount.rawValue:
                 resultText = savingsViewModel.calculatePrincipalAmount(withMonthlyPayments: hasMonthlyPayments)
                 break
-            case TextFieldID.principalAmount.rawValue:
-                resultText = savingsViewModel.calculatePrincipalAmount(withMonthlyPayments: hasMonthlyPayments)
+            case TextFieldID.duration.rawValue:
+                resultText = savingsViewModel.calculateDuration(withMonthlyPayments: hasMonthlyPayments)
                 break
             default:
                 break

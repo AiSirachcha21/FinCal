@@ -54,16 +54,13 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
         state.duration = duration
     
         if durationInYears {
-            let years = duration / 12
-            let formattedYears = Int(years.roundTo(decimalPlaces: 2))
-            
-            let monthDecimal = years.truncatingRemainder(dividingBy: 1)
-            let months = Int((monthDecimal * 12).rounded(.up))
-            
-            return getFieldStringRepr(fieldTag: .duration, value: (formattedYears, months))
+            let years = Int(duration)
+            let months = Int((duration - Double(years)) * 12)
+                        
+            return getFieldStringRepr(fieldTag: .duration, value: (years, months))
         }
         
-        return "\(duration * 12) months"
+        return "\((duration * 12).roundTo(decimalPlaces: 2)) months"
     }
     
     
