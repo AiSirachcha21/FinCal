@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SavingsViewController: UIViewController {
+class SavingsViewController: UIViewController, UISheetPresentationControllerDelegate {
 
     @IBOutlet var compoundSavingSwitcher: UISegmentedControl!
     
@@ -43,9 +43,10 @@ class SavingsViewController: UIViewController {
     private lazy var savingsViewModel = SimpleSavingsViewModel(state: SimpleSavings())
     private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
     private lazy var selectableFields = [
-        TextFieldIdentity(name:"Principal Amount", id:TextFieldID.principalAmount),
-        TextFieldIdentity(name:"Future Value", id:TextFieldID.futureValue),
-        TextFieldIdentity(name:"Interest", id:TextFieldID.interest)
+        TextFieldIdentity(name:"Principal Amount", id: .principalAmount),
+        TextFieldIdentity(name:"Future Value", id: .futureValue),
+        TextFieldIdentity(name:"Interest", id: .interest),
+        TextFieldIdentity(name:"Duration", id: .duration)
     ]
     
     private lazy var userDefaults = UserDefaults.standard
@@ -141,8 +142,8 @@ class SavingsViewController: UIViewController {
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersEdgeAttachedInCompactHeight = true
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-            sheet.prefersGrabberVisible = true
         }
+        fieldSelectorVC.isModalInPresentation = true
 
         savingsViewScrollView.isUserInteractionEnabled = false
         pickSolvingFieldBtn.isEnabled = false
@@ -165,6 +166,9 @@ class SavingsViewController: UIViewController {
                 break
             case TextFieldID.interest.rawValue:
                 resultText = savingsViewModel.calculateInterest(withMonthlyPayments: hasMonthlyPayments)
+                break
+            case TextFieldID.principalAmount.rawValue:
+                resultText = savingsViewModel.calculatePrincipalAmount(withMonthlyPayments: hasMonthlyPayments)
                 break
             case TextFieldID.principalAmount.rawValue:
                 resultText = savingsViewModel.calculatePrincipalAmount(withMonthlyPayments: hasMonthlyPayments)

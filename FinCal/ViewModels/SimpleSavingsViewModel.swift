@@ -44,6 +44,28 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
         return getFieldStringRepr(fieldTag: .principalAmount, value: principalAmount)
     }
     
+    func calculateDuration(withMonthlyPayments hasMonthlyPayments: Bool) -> String? {
+        let duration = state.getDuration(withMonthlyPayments: hasMonthlyPayments)
+        
+        if isInvalidValue(duration) {
+            return nil
+        }
+        
+        state.duration = duration
+    
+        if durationInYears {
+            let years = duration / 12
+            let formattedYears = Int(years.roundTo(decimalPlaces: 2))
+            
+            let monthDecimal = years.truncatingRemainder(dividingBy: 1)
+            let months = Int((monthDecimal * 12).rounded(.up))
+            
+            return getFieldStringRepr(fieldTag: .duration, value: (formattedYears, months))
+        }
+        
+        return "\(duration * 12) months"
+    }
+    
     
     func updateModelStateUsing(_ field: UITextField) {
         switch field.tag {
