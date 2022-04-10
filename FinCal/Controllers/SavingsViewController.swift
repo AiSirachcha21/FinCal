@@ -65,6 +65,7 @@ class SavingsViewController: UIViewController {
         // Watches for change in the selected missing field
         missingFieldObserver = observe(\.missingField, options: [.new]) { [weak self] obj, change in
             self?.exposeRequiredFields(missingFieldTag: change.newValue!)
+            self?.durationTypeController.isHidden = change.newValue! != TextFieldID.duration.rawValue
         }
         
         missingFieldLabel.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
@@ -123,15 +124,10 @@ class SavingsViewController: UIViewController {
     @IBAction func openFieldToSolveSelectionSheet() {
         func handleClose(selectedValue:TextFieldID?) {
             self.savingsViewScrollView.isUserInteractionEnabled = true
+            self.pickSolvingFieldBtn.isEnabled = true
             
             if let newMissingFieldTag = selectedValue?.rawValue {
                 self.missingField = newMissingFieldTag
-            } else {
-                /* Do this to make sure that the button doesn't use the default text when you click cancel
-                 * after attempting to pick field on first time */
-                self.pickSolvingFieldBtn.subtitleLabel?.text = self.selectableFields.first(
-                    where: {$0.id.rawValue == self.missingField }
-                )?.name
             }
         }
         
@@ -149,9 +145,9 @@ class SavingsViewController: UIViewController {
         }
 
         savingsViewScrollView.isUserInteractionEnabled = false
-        present(fieldSelectorVC, animated: true){
-            handleClose(selectedValue: TextFieldID(rawValue: self.missingField))
-        }
+        pickSolvingFieldBtn.isEnabled = false
+        
+        present(fieldSelectorVC, animated: true)
     }
 
     @IBAction func onEdit(_ sender: UITextField) {
