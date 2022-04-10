@@ -69,18 +69,17 @@ class SimpleSavings: Codable, CustomStringConvertible, Payable {
         return newPrincipalAmount
     }
     
-    //TODO: Refactor the code below.
     func getPrincipalAmount(withMonthlyPayments:Bool) -> Double {
         if !withMonthlyPayments {
             return getPrincipalAmount()
         }
         
-        let interestedCompoundPerYear = interest / compoundsPerYear
+        let interestPerCompoundPerYear = interest / compoundsPerYear
         let totalCompounds = compoundsPerYear * duration
-        let numerator = monthlyPayment * (pow((1 + interestedCompoundPerYear), totalCompounds) - 1)
-        let x = (numerator / interestedCompoundPerYear)
+        let innerNumerator = monthlyPayment * (pow((1 + interestPerCompoundPerYear), totalCompounds) - 1)
+        let numeratorSubtractor = (innerNumerator / interestPerCompoundPerYear)
         
-        let principalAmount = (futureValue - x ) / pow((1 + interestedCompoundPerYear), totalCompounds)
+        let principalAmount = (futureValue - numeratorSubtractor ) / pow((1 + interestPerCompoundPerYear), totalCompounds)
         
         return principalAmount
     }
