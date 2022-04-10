@@ -89,10 +89,10 @@ class SimpleSavings: Codable, CustomStringConvertible, Payable {
             return getDuration()
         }
         
-        let numerator = log(1 + ((interest * futureValue) / monthlyPayment))
-        let denominator = log(1 + interest)
+        let num = (log(futureValue + ((monthlyPayment * compoundsPerYear) / interest)) - log(((interest * principalAmount) + (monthlyPayment * compoundsPerYear)) / interest))
+        let denum = (compoundsPerYear * log(1 + (interest / compoundsPerYear)))
         
-        return numerator / denominator
+      return  num / denum
     }
     
     func getDuration() -> Double {
