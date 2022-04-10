@@ -21,6 +21,7 @@
 		06E0449C27DAFEF7007CBA8C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */; };
 		06E0449E27DB0235007CBA8C /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */; };
 		06E044A027DB412C007CBA8C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */; };
+		06FA8FC8280323F2001060EE /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FA8FC7280323F2001060EE /* HelpViewController.swift */; };
 		06FAB73C27FAC78E00834910 /* StatefulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FAB73B27FAC78E00834910 /* StatefulViewModel.swift */; };
 		06FAB73E27FB460E00834910 /* TextFieldIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FAB73D27FB460E00834910 /* TextFieldIdentity.swift */; };
 		06FC9CC527D4780A0083266B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FC9CC427D4780A0083266B /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		06E0449B27DAFEF7007CBA8C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		06E0449D27DB0235007CBA8C /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
 		06E0449F27DB412C007CBA8C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		06FA8FC7280323F2001060EE /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		06FAB73B27FAC78E00834910 /* StatefulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewModel.swift; sourceTree = "<group>"; };
 		06FAB73D27FB460E00834910 /* TextFieldIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldIdentity.swift; sourceTree = "<group>"; };
 		06FC9CC127D4780A0083266B /* FinCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +182,7 @@
 			children = (
 				06FC9CC827D4780A0083266B /* LoanMortgageViewController.swift */,
 				069171AC27D78CA70071ECE3 /* SavingsViewController.swift */,
+				06FA8FC7280323F2001060EE /* HelpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				06837A0227DA2D820012D45A /* Payable.swift in Sources */,
 				0670D6C227F9B6C1003594DF /* Loan.swift in Sources */,
 				064B8D6927DE7F9400AE4DD5 /* SimpleSavings.swift in Sources */,
+				06FA8FC8280323F2001060EE /* HelpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

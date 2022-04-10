@@ -46,7 +46,6 @@ class LoanMortgageViewController: UIViewController {
         self.setupStatusBar()
 
         title = "Loan and Mortgages"
-        self.addHelpPageNavigationButton(action: nil)
         
         fieldSelectorVC.selectedValue = .duration
         

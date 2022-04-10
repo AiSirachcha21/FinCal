@@ -57,7 +57,6 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
         self.setupStatusBar()
         
         title = "Savings"
-        self.addHelpPageNavigationButton(action: nil)
         
         // To push view up when keyboard shows/hides
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -74,6 +73,10 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
         exposeRequiredFields(missingFieldTag: missingField)
         
         self.recoverFieldsFromMemory()
+    }
+    
+    @objc func navigateToHelpView () {
+        navigationController?.pushViewController(HelpViewController(), animated: true)
     }
     
     /// Recover fields from memory when the application re-launches from inactive, background  or suspended state.

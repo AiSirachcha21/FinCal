@@ -211,7 +211,13 @@
                             <constraint firstItem="pWk-CS-1St" firstAttribute="top" secondItem="Ap5-bH-UP7" secondAttribute="top" id="rf1-Yj-RBV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pia-9M-ozD"/>
+                    <navigationItem key="navigationItem" id="pia-9M-ozD">
+                        <barButtonItem key="rightBarButtonItem" title="Help" image="questionmark.circle" catalog="system" id="oD9-CH-KEY">
+                            <connections>
+                                <segue destination="kb3-I4-kLc" kind="presentation" id="hWf-yq-VQd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="answerTF" destination="VYk-XH-5LC" id="vBp-aM-i4v"/>
                         <outlet property="compoundSavingSwitcher" destination="s1E-4H-MJR" id="2QC-hE-mfc"/>
@@ -244,6 +250,159 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbf-xR-90D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2350.7246376811595" y="-76.630434782608702"/>
+        </scene>
+        <!--How to Use-->
+        <scene sceneID="tkc-hs-22Q">
+            <objects>
+                <viewController title="How to Use" id="kb3-I4-kLc" customClass="HelpViewController" customModule="FinCal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ajq-ZY-FnV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDu-2E-SRO">
+                                <rect key="frame" x="20" y="0.0" width="374" height="716"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="E4e-Y4-yOh">
+                                        <rect key="frame" x="0.0" y="30" width="374" height="1124"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to use the calculator" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHl-Vo-TNm">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="33.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DOM-Ix-eQz">
+                                                <rect key="frame" x="0.0" y="53.666666666666671" width="374" height="101.00000000000001"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have 4 main parts" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ml9-yo-P0U">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xox-AS-4Pr">
+                                                        <rect key="frame" x="0.0" y="34" width="374" height="67"/>
+                                                        <string key="text">1. The Field Selector Button
+2. The Field Selector
+3. The Answer Field
+4. The calculation fields</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FYT-aO-VJC">
+                                                <rect key="frame" x="0.0" y="174.66666666666666" width="374" height="124.33333333333334"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Field Selector Button" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0o-rD-bll">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="changeField" translatesAutoresizingMaskIntoConstraints="NO" id="fY9-mr-zPE">
+                                                        <rect key="frame" x="0.0" y="34" width="374" height="30"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slA-qW-I2F">
+                                                        <rect key="frame" x="0.0" y="74.000000000000028" width="374" height="50.333333333333343"/>
+                                                        <string key="text">Use this button to change the field you wanna solve. It will open up the Field Selector providing a selection of solvable fields</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="18T-av-maY">
+                                                <rect key="frame" x="0.0" y="319" width="374" height="257"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Field Selector" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yH2-lP-Lme">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fieldPicker" translatesAutoresizingMaskIntoConstraints="NO" id="1Qs-mF-5L0">
+                                                        <rect key="frame" x="0.0" y="44" width="374" height="159.33333333333334"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This picker will let you choose between the fields you can solve using the calculator" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tq-zl-gXf">
+                                                        <rect key="frame" x="0.0" y="223.33333333333337" width="374" height="33.666666666666686"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wLt-tB-sXZ">
+                                                <rect key="frame" x="0.0" y="596" width="374" height="217.66666666666663"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Answer Field" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHG-sz-iCs">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="answerField" translatesAutoresizingMaskIntoConstraints="NO" id="0ga-er-ffv">
+                                                        <rect key="frame" x="0.0" y="44" width="374" height="70"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejF-KB-Grb">
+                                                        <rect key="frame" x="0.0" y="134" width="374" height="83.666666666666686"/>
+                                                        <string key="text">This is the field which will show the answer you are looking for. The title currently showing "Future Value" will change based on your selection in the Field Selector and the answer will be formatted based on whats required in the field directly below it</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Y30-6R-bK9">
+                                                <rect key="frame" x="0.0" y="833.66666666666663" width="374" height="290.33333333333337"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Calculation Fields" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tg-PJ-3AP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fieldsToComplete" translatesAutoresizingMaskIntoConstraints="NO" id="pRg-d5-hIc">
+                                                        <rect key="frame" x="0.0" y="44" width="374" height="159.33333333333334"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0H-vm-qjh">
+                                                        <rect key="frame" x="0.0" y="223.33333333333337" width="374" height="67"/>
+                                                        <string key="text">These are all the data required to make the calculation. They will also change based on what you pick in the Field Selector. They are automatically formatted and adapted to work for the field in question</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="E4e-Y4-yOh" firstAttribute="leading" secondItem="Ebx-DW-CcW" secondAttribute="leading" id="1qt-bH-eIM"/>
+                                    <constraint firstItem="E4e-Y4-yOh" firstAttribute="trailing" secondItem="Ebx-DW-CcW" secondAttribute="trailing" id="6gy-CZ-utX"/>
+                                    <constraint firstItem="E4e-Y4-yOh" firstAttribute="top" secondItem="Ebx-DW-CcW" secondAttribute="top" constant="30" id="Vgg-2J-VNp"/>
+                                    <constraint firstItem="E4e-Y4-yOh" firstAttribute="width" secondItem="7pz-k9-Ce2" secondAttribute="width" id="wUk-JB-nOG"/>
+                                    <constraint firstItem="E4e-Y4-yOh" firstAttribute="bottom" secondItem="Ebx-DW-CcW" secondAttribute="bottom" constant="-30" id="yT8-ex-jEM"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Ebx-DW-CcW"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="7pz-k9-Ce2"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uhQ-V2-xj9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cDu-2E-SRO" firstAttribute="top" secondItem="uhQ-V2-xj9" secondAttribute="top" id="0hH-zh-RV2"/>
+                            <constraint firstItem="cDu-2E-SRO" firstAttribute="bottom" secondItem="uhQ-V2-xj9" secondAttribute="bottom" id="1Gs-Jz-OIk"/>
+                            <constraint firstItem="cDu-2E-SRO" firstAttribute="leading" secondItem="uhQ-V2-xj9" secondAttribute="leading" constant="20" id="ort-s9-I1P"/>
+                            <constraint firstItem="cDu-2E-SRO" firstAttribute="trailing" secondItem="uhQ-V2-xj9" secondAttribute="trailing" constant="-20" id="zWk-q7-n8J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="AMS-2V-OAQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fd4-SH-vhd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3361" y="284"/>
         </scene>
         <!--Loans and Mortgage-->
         <scene sceneID="kUW-Yk-427">
@@ -414,7 +573,13 @@
                             <constraint firstItem="VBe-KA-Oba" firstAttribute="trailing" secondItem="J2H-Qo-Zi6" secondAttribute="trailing" id="tbb-cv-Ol6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="KG7-s2-96C"/>
+                    <navigationItem key="navigationItem" id="KG7-s2-96C">
+                        <barButtonItem key="rightBarButtonItem" title="Help" image="questionmark.circle" catalog="system" id="6SS-JS-NP8">
+                            <connections>
+                                <segue destination="kb3-I4-kLc" kind="presentation" id="shW-pH-5E0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="changeFieldButton" destination="g4j-dG-Mow" id="aoc-qp-ynf"/>
                         <outlet property="durationTypeController" destination="Zog-hr-G2M" id="c1t-22-iiq"/>
@@ -460,12 +625,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIF-ZI-rBw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42.028985507246382" y="668.97321428571422"/>
+            <point key="canvasLocation" x="333" y="284"/>
         </scene>
         <!--Savings-->
         <scene sceneID="gnm-fe-5rH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkF-c6-l7B" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenKeyboardAppears="YES" id="tkF-c6-l7B" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Savings" image="dollarsign.circle" catalog="system" id="QxJ-1V-lvy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eVe-0S-LY0">
@@ -477,6 +642,9 @@
                         <navigationBarAppearance key="standardAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4RJ-BP-2Mm">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="i41-1y-qDf" kind="relationship" relationship="rootViewController" id="P8L-nt-Fk7"/>
                     </connections>
@@ -488,7 +656,7 @@
         <!--Loans and Mortgages-->
         <scene sceneID="dxV-Q4-5sg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P2H-kO-bNH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenKeyboardAppears="YES" id="P2H-kO-bNH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Loans and Mortgages" image="arrow.down.doc" catalog="system" selectedImage="arrow.down.doc" id="kzC-oo-c4C"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fcG-V6-9V0">
@@ -505,11 +673,19 @@
             <point key="canvasLocation" x="1440.5797101449277" y="668.97321428571422"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hWf-yq-VQd"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="answerField" width="230.66667175292969" height="70"/>
         <image name="arrow.down.doc" catalog="system" width="115" height="128"/>
+        <image name="changeField" width="230.66667175292969" height="30"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
+        <image name="fieldPicker" width="226" height="159.33332824707031"/>
+        <image name="fieldsToComplete" width="230.66667175292969" height="159.33332824707031"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
