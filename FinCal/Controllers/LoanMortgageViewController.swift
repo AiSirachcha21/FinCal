@@ -31,9 +31,9 @@ class LoanMortgageViewController: UIViewController {
     @IBOutlet var missingFieldLabel: UILabel!
     @objc dynamic var missingField = TextFieldID.duration.rawValue
     private var missingFieldObserver: NSKeyValueObservation?
+    private var fieldSelectorVC: FieldSelectorSheetViewControlller?
     
     private lazy var loanViewModel = LoanMortgageViewModel(state: Loan())
-    private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
     private lazy var selectableFields:[TextFieldIdentity] = [
         TextFieldIdentity(name: "Duration", id: TextFieldID.duration),
         TextFieldIdentity(name: "Monthly Payments", id: TextFieldID.monthlyPayments)
@@ -47,8 +47,6 @@ class LoanMortgageViewController: UIViewController {
 
         title = "Loan and Mortgages"
         
-        fieldSelectorVC.selectedValue = .duration
-        
         // To push view up when keyboard shows/hides
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardHides), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -59,7 +57,7 @@ class LoanMortgageViewController: UIViewController {
             self?.missingFieldLabel.text = self?.selectableFields.first(where: { $0.id.rawValue == self?.missingField })?.name
         }
         
-        missingFieldLabel.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
+        missingFieldLabel.text = selectableFields[0].name
         exposeRequiredFields(missingFieldTag: missingField)
         
         self.recoverFieldsFromMemory()
@@ -76,7 +74,7 @@ class LoanMortgageViewController: UIViewController {
             monthlyPaymentTF.text = loan.monthlyPayment.roundTo(decimalPlaces: 2).description
             numberOfPaymentsTF.text = loan.duration.description
             
-            missingField = TextFieldID.futureValue.rawValue
+            missingField = TextFieldID.duration.rawValue
         }
     }
     
@@ -111,12 +109,13 @@ class LoanMortgageViewController: UIViewController {
             }
         }
         
-        fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
-        fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
-        fieldSelectorVC.onCloseAction = handleClose
-        fieldSelectorVC.isModalInPresentation = true
+        fieldSelectorVC = FieldSelectorSheetViewControlller()
+        fieldSelectorVC!.fields = [TextFieldIdentity](selectableFields)
+        fieldSelectorVC!.selectedValue = TextFieldID(rawValue: missingField)!
+        fieldSelectorVC!.onCloseAction = handleClose
+        fieldSelectorVC!.isModalInPresentation = true
         
-        if let sheet = fieldSelectorVC.sheetPresentationController {
+        if let sheet = fieldSelectorVC!.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.largestUndimmedDetentIdentifier = .medium
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
@@ -127,7 +126,7 @@ class LoanMortgageViewController: UIViewController {
         scrollView.isUserInteractionEnabled = false
         changeFieldButton.isEnabled = false
         
-        present(fieldSelectorVC, animated: true)
+        present(fieldSelectorVC!, animated: true)
     }
 
     @IBAction func onEdit(_ sender: UITextField) {

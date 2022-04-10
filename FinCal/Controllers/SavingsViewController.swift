@@ -80,10 +80,6 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
         self.recoverFieldsFromMemory()
     }
     
-    @objc func navigateToHelpView () {
-        navigationController?.pushViewController(HelpViewController(), animated: true)
-    }
-    
     /// Recover fields from memory when the application re-launches from inactive, background  or suspended state.
     func recoverFieldsFromMemory(){
         if let savingsData = UserDefaults.standard.data(forKey: UserDefaultKeys.savings),
