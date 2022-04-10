@@ -87,8 +87,10 @@ class LoanMortgageViewController: UIViewController {
         if let missingTFContainer = containers.first(where: { $0.arrangedSubviews.last?.tag == missingFieldTag }),
            let missingTF = textFields.first(where: { $0.tag == missingFieldTag }),
            let missingTFLabel = (missingTFContainer.arrangedSubviews.first as? UILabel)?.text {
-            missingTFContainer.isHidden = true
+
+            loanViewModel.reassign(fields: textFields)
             
+            missingTFContainer.isHidden = true
             missingFieldLabel.text = missingTFLabel
             resultTF.text = missingTF.text
             resultTF.placeholder = missingTF.placeholder
@@ -130,7 +132,7 @@ class LoanMortgageViewController: UIViewController {
     }
 
     @IBAction func onEdit(_ sender: UITextField) {
-        loanViewModel.updateModelStateUsing(sender)
+        loanViewModel.reassign(sender)
         calculateMissingField()
     }
     

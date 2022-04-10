@@ -39,7 +39,36 @@ class LoanMortgageViewModel : StatefulViewModel<Loan> {
         return getFieldStringRepr(fieldTag: .monthlyPayments, value: monthlyPayment)
     }
     
-    func updateModelStateUsing(_ field: UITextField) {
+    func reassign(fields textFields: [UITextField]) {
+        for textField in textFields {
+            var text = ""
+            switch textField.tag {
+                case TextFieldID.principalAmount.rawValue:
+                    text = state.principalAmount.roundTo(decimalPlaces: 2).description
+                    break
+                    
+                case TextFieldID.interest.rawValue:
+                    text = state.interest.roundTo(decimalPlaces: 2).description
+                    break
+                    
+                case TextFieldID.duration.rawValue:
+                    text = state.duration.roundTo(decimalPlaces: 2).description
+                    break
+                    
+                case TextFieldID.monthlyPayments.rawValue:
+                    text = state.monthlyPayment.roundTo(decimalPlaces: 2).description
+                    break
+                    
+                default:
+                    text = (0.0).description
+                    break
+            }
+            
+            textField.text = text
+        }
+    }
+    
+    func reassign(_ field: UITextField) {
         switch field.tag {
             case TextFieldID.principalAmount.rawValue:
                 state.principalAmount = fabs(Double(field.text!) ?? 0.0)
