@@ -75,8 +75,17 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
         }
         
         missingFieldLabel.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
-        exposeRequiredFields(missingFieldTag: missingField)
         
+        for tf in textFields {
+            if tf.tag == TextFieldID.monthlyPayments.rawValue {
+                tf.addNumericAccessory(addPlusMinus: true)
+                continue
+            }
+            
+            tf.addNumericAccessory(addPlusMinus: false)
+        }
+        
+        exposeRequiredFields(missingFieldTag: missingField)
         self.recoverFieldsFromMemory()
     }
     
@@ -194,5 +203,12 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
         }
         
         answerTF.text = resultText ?? defaultErrorMessage
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

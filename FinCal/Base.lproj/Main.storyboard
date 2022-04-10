@@ -630,7 +630,7 @@
         <!--Savings-->
         <scene sceneID="gnm-fe-5rH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenKeyboardAppears="YES" id="tkF-c6-l7B" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkF-c6-l7B" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Savings" image="dollarsign.circle" catalog="system" id="QxJ-1V-lvy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eVe-0S-LY0">
@@ -656,7 +656,7 @@
         <!--Loans and Mortgages-->
         <scene sceneID="dxV-Q4-5sg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenKeyboardAppears="YES" id="P2H-kO-bNH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P2H-kO-bNH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Loans and Mortgages" image="arrow.down.doc" catalog="system" selectedImage="arrow.down.doc" id="kzC-oo-c4C"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fcG-V6-9V0">
@@ -674,7 +674,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="shW-pH-5E0"/>
+        <segue reference="hWf-yq-VQd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="answerField" width="230.66667175292969" height="70"/>

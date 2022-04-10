@@ -10,22 +10,22 @@ import UIKit
 
 extension UITextField {
     func addNumericAccessory(addPlusMinus: Bool) {
-        let numberToolbar = UIToolbar()
+        let numberToolbar = UIToolbar(frame: CGRect(x:0, y: 0, width: UIScreen.main.bounds.width, height: 0))
         numberToolbar.barStyle = UIBarStyle.default
 
         var accessories: [UIBarButtonItem] = []
 
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneBtn = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(numberPadDone))
+//Fixed layout issue with keyboard toolbar, reduced height on keyboard appearance in scroll view and added +/- toolbar for
         if addPlusMinus {
-            accessories.append(UIBarButtonItem(title: "+/-", style: UIBarButtonItem.Style.plain, target: self, action: #selector(plusMinusPressed)))
-            accessories.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))   // add padding after
+            let pmBtn = UIBarButtonItem(title: "+/-", style: UIBarButtonItem.Style.plain, target: self, action: #selector(plusMinusPressed))
+            accessories.append(pmBtn)
         }
-
-        accessories.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))   // add padding space
-        accessories.append(UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(numberPadDone)))
-
-        numberToolbar.items = accessories
+        accessories.append(contentsOf: [flexibleSpace,doneBtn])
         numberToolbar.sizeToFit()
 
+        numberToolbar.items = accessories
         inputAccessoryView = numberToolbar
     }
 
