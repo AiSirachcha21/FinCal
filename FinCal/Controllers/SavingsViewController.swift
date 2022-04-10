@@ -124,8 +124,10 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
         if let missingTFContainer = fieldContainers.first(where: { $0.arrangedSubviews.last?.tag == missingFieldTag }),
            let missingTF = textFields.first(where: { $0.tag == missingFieldTag }),
            let missingTFLabel = (missingTFContainer.arrangedSubviews.first as? UILabel)?.text {
-            missingTFContainer.isHidden = true
             
+            savingsViewModel.reassign(fields: textFields)
+            
+            missingTFContainer.isHidden = true
             missingFieldLabel.text = missingTFLabel
             answerTF.text = missingTF.text
             answerTF.placeholder = missingTF.placeholder
@@ -171,7 +173,7 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
     }
 
     @IBAction func onEdit(_ sender: UITextField) {
-        savingsViewModel.updateModelStateUsing(sender)
+        savingsViewModel.reassign(sender)
         calculateMissingField()
     }
     

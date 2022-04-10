@@ -62,8 +62,40 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
         return "\((duration * 12).roundTo(decimalPlaces: 2)) months"
     }
     
+    func reassign(fields textFields: [UITextField]) {
+        for textField in textFields {
+            var text = ""
+            switch textField.tag {
+                case TextFieldID.principalAmount.rawValue:
+                    text = state.principalAmount.roundTo(decimalPlaces: 2).description
+                    break
+                    
+                case TextFieldID.interest.rawValue:
+                    text = state.interest.roundTo(decimalPlaces: 2).description
+                    break
+                    
+                case TextFieldID.duration.rawValue:
+                    text = state.duration.roundTo(decimalPlaces: 2).description
+                    break
+                    
+                case TextFieldID.monthlyPayments.rawValue:
+                    text = state.monthlyPayment.roundTo(decimalPlaces: 2).description
+                    break
+                    
+                case TextFieldID.futureValue.rawValue:
+                    text = state.futureValue.roundTo(decimalPlaces: 2).description
+                    break
+                    
+                default:
+                    text = (0.0).description
+                    break
+            }
+            
+            textField.text = text
+        }
+    }
     
-    func updateModelStateUsing(_ field: UITextField) {
+    func reassign(_ field: UITextField) {
         switch field.tag {
             case TextFieldID.futureValue.rawValue:
                 state.futureValue = fabs(Double(field.text!) ?? 0.0)
