@@ -79,7 +79,7 @@ class SimpleSavings: Codable, CustomStringConvertible, Payable {
         let innerNumerator = monthlyPayment * (pow((1 + interestPerCompoundPerYear), totalCompounds) - 1)
         let numeratorSubtractor = (innerNumerator / interestPerCompoundPerYear)
         
-        let principalAmount = (futureValue - numeratorSubtractor ) / pow((1 + interestPerCompoundPerYear), totalCompounds)
+        let principalAmount = (futureValue - numeratorSubtractor) / pow((1 + interestPerCompoundPerYear), totalCompounds)
         
         return principalAmount
     }

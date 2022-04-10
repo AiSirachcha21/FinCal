@@ -83,7 +83,7 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
                 break
                 
             case TextFieldID.monthlyPayments.rawValue:
-                state.monthlyPayment = fabs(Double(field.text!) ?? 0.0)
+                state.monthlyPayment = Double(field.text!) ?? 0.0
                 break
                 
             default:
