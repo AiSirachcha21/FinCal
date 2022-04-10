@@ -285,6 +285,17 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     </textField>
+                                                    <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zog-hr-G2M">
+                                                        <rect key="frame" x="0.0" y="89.666666666666671" width="394" height="1"/>
+                                                        <segments>
+                                                            <segment title="Years"/>
+                                                            <segment title="Months"/>
+                                                        </segments>
+                                                        <color key="selectedSegmentTintColor" name="AccentColor"/>
+                                                        <connections>
+                                                            <action selector="onDurationTypeChange:" destination="ZAy-eZ-qWo" eventType="valueChanged" id="oQV-Bt-DrH"/>
+                                                        </connections>
+                                                    </segmentedControl>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4j-dG-Mow">
                                                         <rect key="frame" x="0.0" y="94.666666666666671" width="394" height="31"/>
                                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.25" height="1"/>
@@ -292,6 +303,9 @@
                                                         <buttonConfiguration key="configuration" style="tinted" title="Change Field" titleAlignment="center">
                                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="openFieldToSolveSelectionSheet" destination="ZAy-eZ-qWo" eventType="touchDown" id="ska-E6-eg6"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -403,6 +417,7 @@
                     <navigationItem key="navigationItem" id="KG7-s2-96C"/>
                     <connections>
                         <outlet property="changeFieldButton" destination="g4j-dG-Mow" id="aoc-qp-ynf"/>
+                        <outlet property="durationTypeController" destination="Zog-hr-G2M" id="c1t-22-iiq"/>
                         <outlet property="interestContainer" destination="IJp-Uc-2yv" id="OtU-yE-Z6x"/>
                         <outlet property="interestTF" destination="Yjo-hB-oQq" id="18r-BG-oXD"/>
                         <outlet property="loanAmountTF" destination="ReS-Mr-amZ" id="IJR-fb-47J"/>

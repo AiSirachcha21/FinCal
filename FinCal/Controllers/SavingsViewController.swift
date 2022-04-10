@@ -137,6 +137,7 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
         fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
         fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
         fieldSelectorVC.onCloseAction = handleClose
+        fieldSelectorVC.isModalInPresentation = true
 
         if let sheet = fieldSelectorVC.sheetPresentationController {
             sheet.detents = [.medium()]
@@ -145,7 +146,6 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
             sheet.prefersEdgeAttachedInCompactHeight = true
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
         }
-        fieldSelectorVC.isModalInPresentation = true
 
         savingsViewScrollView.isUserInteractionEnabled = false
         pickSolvingFieldBtn.isEnabled = false

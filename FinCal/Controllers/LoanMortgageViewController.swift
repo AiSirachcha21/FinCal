@@ -26,6 +26,8 @@ class LoanMortgageViewController: UIViewController {
     
     @IBOutlet var changeFieldButton: UIButton!
     
+    @IBOutlet var durationTypeController: UISegmentedControl!
+    
     @IBOutlet var missingFieldLabel: UILabel!
     @objc dynamic var missingField = TextFieldID.duration.rawValue
     private var missingFieldObserver: NSKeyValueObservation?
@@ -52,10 +54,10 @@ class LoanMortgageViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustScreenWhenKeyboardHides), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        changeFieldButton.addTarget(self, action: #selector(openFieldToSolveSelectionSheet), for: .touchDown)
-        
         missingFieldObserver = observe(\.missingField, options: [.new]){ [weak self] obj, change in
             self?.exposeRequiredFields(missingFieldTag: change.newValue!)
+            self?.durationTypeController.isHidden = change.newValue! != TextFieldID.duration.rawValue
+            self?.missingFieldLabel.text = self?.selectableFields.first(where: { $0.id.rawValue == self?.missingField })?.name
         }
         
         missingFieldLabel.text = selectableFields.first(where: { $0.id.rawValue == missingField })?.name
@@ -79,6 +81,11 @@ class LoanMortgageViewController: UIViewController {
         }
     }
     
+    @IBAction func onDurationTypeChange(_ sender: UISegmentedControl) {
+        loanViewModel.durationInYears = sender.selectedSegmentIndex == 0
+        calculateMissingField()
+    }
+    
     func exposeRequiredFields(missingFieldTag: Int) {
         if let missingTFContainer = containers.first(where: { $0.arrangedSubviews.last?.tag == missingFieldTag }),
            let missingTF = textFields.first(where: { $0.tag == missingFieldTag }),
@@ -95,22 +102,20 @@ class LoanMortgageViewController: UIViewController {
         }
     }
     
-    @objc func openFieldToSolveSelectionSheet() {
-        fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
-        fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
-        fieldSelectorVC.onCloseAction = { [weak self] selectedValue in
-            self?.scrollView.isUserInteractionEnabled = true
+    @IBAction func openFieldToSolveSelectionSheet() {
+        func handleClose(selectedValue:TextFieldID?) {
+            self.scrollView.isUserInteractionEnabled = true
+            self.changeFieldButton.isEnabled = true
             
             if let newMissingFieldTag = selectedValue?.rawValue {
-                self?.missingField = newMissingFieldTag
-            } else {
-                /* Do this to make sure that the button doesn't use the default text when you click cancel
-                 * after attempting to pick field on first time */
-                self?.changeFieldButton.subtitleLabel?.text = self?.selectableFields.first(
-                    where: {$0.id.rawValue == self?.missingField }
-                )?.name
+                self.missingField = newMissingFieldTag
             }
         }
+        
+        fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
+        fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
+        fieldSelectorVC.onCloseAction = handleClose
+        fieldSelectorVC.isModalInPresentation = true
         
         if let sheet = fieldSelectorVC.sheetPresentationController {
             sheet.detents = [.medium()]
@@ -121,7 +126,9 @@ class LoanMortgageViewController: UIViewController {
         }
         
         scrollView.isUserInteractionEnabled = false
-        present(fieldSelectorVC, animated: true, completion: nil)
+        changeFieldButton.isEnabled = false
+        
+        present(fieldSelectorVC, animated: true)
     }
 
     @IBAction func onEdit(_ sender: UITextField) {
@@ -144,12 +151,12 @@ class LoanMortgageViewController: UIViewController {
                 break
         }
         
-        resultTF.text = resultText ?? defaultErrorMessage
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        if let encodedState = try? JSONEncoder().encode(loanViewModel.state) {
-            userDefaults.set(encodedState, forKey: UserDefaultKeys.loans)
+        if resultText != nil {
+            if let encodedState = try? JSONEncoder().encode(loanViewModel.state) {
+                userDefaults.set(encodedState, forKey: UserDefaultKeys.loans)
+            }
         }
+        
+        resultTF.text = resultText ?? defaultErrorMessage
     }
 }
