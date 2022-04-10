@@ -41,7 +41,7 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
     private var hasMonthlyPayments = false
     private var fieldSelectorVC: FieldSelectorSheetViewController?
 
-    private lazy var savingsViewModel = SimpleSavingsViewModel(state: SimpleSavings())
+    private lazy var savingsViewModel = SavingsViewModel(state: Savings())
     private lazy var selectableFields = [
         TextFieldIdentity(name:"Principal Amount", id: .principalAmount),
         TextFieldIdentity(name:"Future Value", id: .futureValue),
@@ -92,7 +92,7 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
     /// Recover fields from memory when the application re-launches from inactive, background  or suspended state.
     func recoverFieldsFromMemory(){
         if let savingsData = UserDefaults.standard.data(forKey: UserDefaultKeys.savings),
-           let savings = try? JSONDecoder().decode(SimpleSavings.self, from: savingsData) {
+           let savings = try? JSONDecoder().decode(Savings.self, from: savingsData) {
             savingsViewModel.state = savings
             
             principalAmountTF.text = savings.principalAmount.roundTo(decimalPlaces: 2).description

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
+class SavingsViewModel : StatefulViewModel<Savings> {
     func calculateFutureValue(withMonthlyPayments hasMonthlyPayments: Bool) -> String? {
         let futureValue = state.getFutureValue(withMonthlyPayments: hasMonthlyPayments)
         

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SimpleSavings: Codable, CustomStringConvertible, Payable {
+class Savings: Codable, CustomStringConvertible, Payable {
     init() {
     }
 
@@ -19,7 +19,7 @@ class SimpleSavings: Codable, CustomStringConvertible, Payable {
     var monthlyPayment: Double = 0.0
     
     
-    public var description: String { return "\(SimpleSavings.Type.self)(futureValue: \(self.futureValue), principalAmount: \(self.principalAmount), interest: \(self.interest), duration: \(self.duration))" }
+    public var description: String { return "\(Savings.Type.self)(futureValue: \(self.futureValue), principalAmount: \(self.principalAmount), interest: \(self.interest), duration: \(self.duration))" }
 
     func getFutureValue() -> Double {
         let inner = 1 + interest / compoundsPerYear
