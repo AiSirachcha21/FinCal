@@ -39,13 +39,18 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
     private var missingFieldObserver: NSKeyValueObservation?
     
     private var hasMonthlyPayments = false
+    private var fieldSelectorVC: FieldSelectorSheetViewControlller?
 
     private lazy var savingsViewModel = SimpleSavingsViewModel(state: SimpleSavings())
-    private lazy var fieldSelectorVC = FieldSelectorSheetViewControlller()
     private lazy var selectableFields = [
         TextFieldIdentity(name:"Principal Amount", id: .principalAmount),
         TextFieldIdentity(name:"Future Value", id: .futureValue),
         TextFieldIdentity(name:"Interest", id: .interest),
+        TextFieldIdentity(name:"Duration", id: .duration)
+    ]
+    private lazy var selectableFieldsForMonthlyContributions = [
+        TextFieldIdentity(name:"Principal Amount", id: .principalAmount),
+        TextFieldIdentity(name:"Future Value", id: .futureValue),
         TextFieldIdentity(name:"Duration", id: .duration)
     ]
     
@@ -103,6 +108,9 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
     
     @IBAction func changeSavingsType() {
         hasMonthlyPayments = compoundSavingSwitcher.selectedSegmentIndex == 1
+        if hasMonthlyPayments && missingField == TextFieldID.interest.rawValue {
+            missingField = TextFieldID.duration.rawValue
+        }
         exposeRequiredFields(missingFieldTag: missingField)
         calculateMissingField()
     }
@@ -137,12 +145,13 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
             }
         }
         
-        fieldSelectorVC.fields = [TextFieldIdentity](selectableFields)
-        fieldSelectorVC.selectedValue = TextFieldID(rawValue: missingField)!
-        fieldSelectorVC.onCloseAction = handleClose
-        fieldSelectorVC.isModalInPresentation = true
+        fieldSelectorVC = FieldSelectorSheetViewControlller()
+        fieldSelectorVC!.fields = [TextFieldIdentity](hasMonthlyPayments ? selectableFieldsForMonthlyContributions : selectableFields)
+        fieldSelectorVC!.selectedValue = TextFieldID(rawValue: missingField)!
+        fieldSelectorVC!.onCloseAction = handleClose
+        fieldSelectorVC!.isModalInPresentation = true
 
-        if let sheet = fieldSelectorVC.sheetPresentationController {
+        if let sheet = fieldSelectorVC!.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.largestUndimmedDetentIdentifier = .medium
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
@@ -153,7 +162,7 @@ class SavingsViewController: UIViewController, UISheetPresentationControllerDele
         savingsViewScrollView.isUserInteractionEnabled = false
         pickSolvingFieldBtn.isEnabled = false
         
-        present(fieldSelectorVC, animated: true)
+        present(fieldSelectorVC!, animated: true)
     }
 
     @IBAction func onEdit(_ sender: UITextField) {
