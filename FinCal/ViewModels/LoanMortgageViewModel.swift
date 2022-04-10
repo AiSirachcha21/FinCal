@@ -26,13 +26,10 @@ class LoanMortgageViewModel : StatefulViewModel<Loan> {
             return "\(abs(mortgageDuration)) months"
         }
         
-        let years = mortgageDuration / 12
-        let formattedYears = Int(years.roundTo(decimalPlaces: 2))
+        let years = Int(mortgageDuration)
+        let months = Int((mortgageDuration - Double(years)) * 12)
         
-        let monthDecimal = years.truncatingRemainder(dividingBy: 1)
-        let months = Int((monthDecimal * 12).rounded(.up))
-        
-        return getFieldStringRepr(fieldTag: .duration, value: (formattedYears, months))
+        return getFieldStringRepr(fieldTag: .duration, value: (years, months))
     }
     
     /// Returns Monthly Payment Rounded to 2 Decimal Places as a String
