@@ -56,7 +56,6 @@ class SimpleSavingsViewModel : StatefulViewModel<SimpleSavings> {
         if durationInYears {
             let years = Int(duration)
             let months = Int((duration - Double(years)) * 12)
-                        
             return getFieldStringRepr(fieldTag: .duration, value: (years, months))
         }
         

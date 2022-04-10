@@ -30,7 +30,7 @@ class StatefulViewModel<T> {
                 break
                 
             case .interest:
-                string = "\(value.roundTo(decimalPlaces: 2) * 100)%"
+                string = "\((value * 100).roundTo(decimalPlaces: 2))%"
                 break
                 
             default:
