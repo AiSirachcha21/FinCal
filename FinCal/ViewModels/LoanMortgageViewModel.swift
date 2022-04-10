@@ -7,29 +7,24 @@
 
 import UIKit
 
-enum LoanTimeFormat {
-    case months
-    case years
-}
-
 class LoanMortgageViewModel : StatefulViewModel<Loan> {
-    func calculateTimeToFinishLoan(returnAs:LoanTimeFormat = .years) -> String? {
+    func calculateTimeToFinishLoan() -> String? {
         let mortgageDuration = state.getMortgageDuration()
         
-        if mortgageDuration.isNaN || mortgageDuration.isInfinite {
+        if isInvalidValue(mortgageDuration){
             return nil
         }
         
         state.duration = mortgageDuration
         
-        if returnAs == .months {
-            return "\(abs(mortgageDuration)) months"
+        if durationInYears {
+            let years = Int(mortgageDuration)
+            let months = Int((mortgageDuration - Double(years)) * 12)
+
+            return getFieldStringRepr(fieldTag: .duration, value: (years, months))
         }
         
-        let years = Int(mortgageDuration)
-        let months = Int((mortgageDuration - Double(years)) * 12)
-        
-        return getFieldStringRepr(fieldTag: .duration, value: (years, months))
+        return "\((mortgageDuration * 12).roundTo(decimalPlaces: 2)) months"
     }
     
     /// Returns Monthly Payment Rounded to 2 Decimal Places as a String
